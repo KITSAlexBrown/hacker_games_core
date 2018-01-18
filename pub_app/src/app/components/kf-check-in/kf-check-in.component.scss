@@ -1,13 +1,13 @@
-ul {
-    list-style: none;
-}
-
-.selected {
-    border: 1px solid grey;
-    border-radius: 5px;
-    background-color: grey;
-}
-
-.button {
-    background-color: grey;
+:host {
+    display: block;
+    margin-bottom: 100px;
+    ul {
+        list-style: none;
+    }
+    
+    .selected {
+        border: 1px solid grey;
+        border-radius: 5px;
+        background-color: grey;
+    }
 }
