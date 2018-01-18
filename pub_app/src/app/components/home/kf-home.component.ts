@@ -7,5 +7,29 @@ import { Component } from "@angular/core";
 })
 
 export class KfHomeComponent {
+    navLinks: Link[];
+    constructor() {
+        this.navLinks = [ {
+            path: 'profile',
+            label: 'Profile'
+        },
+        {
+            path: 'tracker',
+            label: 'tracker'
+        },
+        {
+            path: 'mood',
+            label: 'mood'
+        },
+        {
+            path: 'notes',
+            label: 'notes'
+        }
+    ]
+    }
+}
 
+export interface Link {
+        path: string;
+        label: string;
 }
