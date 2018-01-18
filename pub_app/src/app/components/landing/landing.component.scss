@@ -1,0 +1,21 @@
+
+
+
+:host {
+    .landing-container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+    }
+
+    .landing-center {
+        max-width: 300px;
+    }
+
+    h1 {
+        text-align: center;
+        margin-bottom: 40px;
+    }
+
+}
