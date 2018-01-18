@@ -7,7 +7,7 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 // Components
 import { AppComponent } from './app.component';
 import { KfCheckInComponent } from './components/kf-check-in/kf-check-in.component';
-import { KfHomeComponent } from './components/home/kf-home.component';
+import { KfTabComponent } from './components/kf-tab/kf-tab.component';
 import {
   MatAutocompleteModule,
   MatButtonModule,
@@ -41,6 +41,7 @@ import {
   MatTooltipModule,
   MatStepperModule,
 } from '@angular/material';
+import { KfIconLink } from './components/kf-icon-link/kf-icon-link.component';
 @NgModule({
   exports: [
     MatAutocompleteModule,
@@ -79,7 +80,7 @@ import {
 export class DemoMaterialModule {}
 
 const appRoutes: Routes = [
-  { path: '', component: KfHomeComponent},
+  { path: '', component: KfTabComponent},
   { path: 'check-in', component: KfCheckInComponent}
 ]
 //
@@ -88,7 +89,8 @@ const appRoutes: Routes = [
   declarations: [
     AppComponent,
     KfCheckInComponent,
-    KfHomeComponent
+    KfTabComponent,
+    KfIconLink
   ],
   imports: [
     RouterModule.forRoot(
