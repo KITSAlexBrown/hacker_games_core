@@ -1,6 +1,8 @@
 # KF MOOD TRACKER APP
 
-We added in angular bootstrap material design  
+![Big Voice - Mood Tracking App](img/logo.png "Big Voice - Mood Tracking App")
+
+We added in angular material.io
 
 [Style guide](https://github.com/mdbootstrap/Angular-Bootstrap-with-Material-Design/tree/master/src)
 
