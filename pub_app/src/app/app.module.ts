@@ -1,3 +1,5 @@
+import { LoginService } from "./providers/login.service";
+import { LandingComponent } from "./components/landing/landing.component";
 // Core modules
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule, NO_ERRORS_SCHEMA } from '@angular/core';
@@ -8,8 +10,10 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 // Components
 import { AppComponent } from './app.component';
 import { KfCheckInComponent } from './components/kf-check-in/kf-check-in.component';
-import { KfHomeComponent } from './components/home/kf-home.component';
 import { KfNoteInputComponent } from './components/kf-note-input/kf-note-input.component';
+import { KfTabComponent } from './components/kf-tab/kf-tab.component';
+import { KfNotesViewComponent } from './components/kf-notes-view/kf-notes-view.component';
+import { KfIconLink } from './components/kf-icon-link/kf-icon-link.component';
 import {
   MatAutocompleteModule,
   MatButtonModule,
@@ -43,7 +47,6 @@ import {
   MatTooltipModule,
   MatStepperModule,
 } from '@angular/material';
-import { KfNotesViewComponent } from './components/kf-notes-view/kf-notes-view.component';
 
 @NgModule({
   exports: [
@@ -84,7 +87,8 @@ import { KfNotesViewComponent } from './components/kf-notes-view/kf-notes-view.c
 export class DemoMaterialModule {}
 
 const appRoutes: Routes = [
-  { path: '', component: KfHomeComponent},
+  { path: '', component:  KfTabComponent},
+  { path: 'landing', component: LandingComponent},
   { path: 'check-in', component: KfCheckInComponent},
   { path: 'notes', 
       children: [
@@ -99,10 +103,12 @@ const appRoutes: Routes = [
 @NgModule({
   declarations: [
     AppComponent,
+    LandingComponent,
     KfCheckInComponent,
-    KfHomeComponent,
     KfNoteInputComponent,
-    KfNotesViewComponent
+    KfNotesViewComponent,
+    KfTabComponent,
+    KfIconLink
   ],
   imports: [
     FormsModule,
@@ -111,12 +117,12 @@ const appRoutes: Routes = [
     ),
     BrowserModule,
     DemoMaterialModule,
-    BrowserAnimationsModule,
+    BrowserAnimationsModule
   ],
   schemas: [ NO_ERRORS_SCHEMA ],
-  providers: [],
+  providers: [LoginService],
   bootstrap: [AppComponent]
 })
-export class AppModule { 
+export class AppModule {
 
 }
