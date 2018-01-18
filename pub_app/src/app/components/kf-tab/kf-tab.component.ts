@@ -11,7 +11,7 @@ export class KfTabComponent {
     constructor() {
         this.navLinks = [ {
             path: 'profile',
-            label: 'Profile'
+            label: 'profile'
         },
         {
             path: 'tracker',

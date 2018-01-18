@@ -19,7 +19,7 @@ export class LandingComponent  {
     console.log(this.name);
     this.loginService.userAccess("Superman", "test", "superma@action.it").subscribe(res => {
       if (res) {
-        this.router.navigateByUrl('');
+        this.router.navigateByUrl('/check-in');
       }
     })
   }
