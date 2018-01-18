@@ -1,11 +1,11 @@
-# KF MOOD TRACKER APP 
+# KF MOOD TRACKER APP
 
-We added in angular bootstrap material design  
+We added in angular bootstrap material design
 
 [Style guide](https://github.com/mdbootstrap/Angular-Bootstrap-with-Material-Design/tree/master/src)
 
 ```sh
-npm i angular-bootstrap-md@5.1.2 --save     
+npm i angular-bootstrap-md@5.1.2 --save
 npm install -–save chart.js@2.5.0 font-awesome hammerjs
 ```
 ## Development server
