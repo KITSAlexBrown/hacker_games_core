@@ -1,0 +1,23 @@
+{
+  "name": "kf_mood_api",
+  "version": "1.0.0",
+  "description": "Kingfisher HackGames mood thacking app ",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/KITSAlexBrown/hacker_games_core.git"
+  },
+  "keywords": [
+    "Mood",
+    "Tracker"
+  ],
+  "author": "Kingfisher",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/KITSAlexBrown/hacker_games_core/issues"
+  },
+  "homepage": "https://github.com/KITSAlexBrown/hacker_games_core#readme"
+}
