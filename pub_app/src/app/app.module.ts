@@ -41,6 +41,7 @@ import {
   MatTooltipModule,
   MatStepperModule,
 } from '@angular/material';
+import { KfNoteInputComponent } from './components/kf-note-input/kf-note-input.component';
 @NgModule({
   exports: [
     MatAutocompleteModule,
@@ -74,13 +75,20 @@ import {
     MatTabsModule,
     MatToolbarModule,
     MatTooltipModule,
-  ]
+  ],
+  declarations: [KfNoteInputComponent]
 })
 export class DemoMaterialModule {}
 
 const appRoutes: Routes = [
   { path: '', component: KfHomeComponent},
-  { path: 'check-in', component: KfCheckInComponent}
+  { path: 'check-in', component: KfCheckInComponent},
+  { path: 'notes', 
+      children: [
+          { path: 'create', component: KfNoteInputComponent },
+          { path: 'edit', component: KfNoteInputComponent }
+      ]
+  }
 ]
 //
 //
