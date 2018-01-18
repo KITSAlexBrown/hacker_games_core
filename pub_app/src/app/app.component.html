@@ -1,2 +1,2 @@
 <router-outlet></router-outlet>
-<kf-home></kf-home>
+<kf-home *ngIf="loginService.userLogged"></kf-home>

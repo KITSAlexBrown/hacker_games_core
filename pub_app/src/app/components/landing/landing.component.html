@@ -3,18 +3,17 @@
     <h1 class="landing-element">Welcome to MoodoMetre!</h1>
     <form class="example-form">
         <mat-form-field class="example-full-width">
-          <input matInput placeholder="Type your name" >
+          <input name="name" matInput placeholder="Type your name" [(ngModel)]="name" required>
         </mat-form-field>
         <mat-form-field>
-            <input matInput placeholder="Enter your email" [formControl]="email" required>
-            <mat-error *ngIf="email.invalid">{{getErrorMessage()}}</mat-error>
+            <input name="email" matInput placeholder="Enter your email" required [(ngModel)]="email">
           </mat-form-field>
         <mat-form-field>
-            <input matInput placeholder="Enter your password" [type]="hide ? 'password' : 'text'">
-            <mat-icon matSuffix (click)="hide = !hide">{{hide ? 'visibility' : 'visibility_off'}}</mat-icon>
+            <input name="password" matInput placeholder="Enter your password" type="password" required [(ngModel)]="password">
+
           </mat-form-field>
         <div>
-          <button mat-raised-button>Enter</button>
+          <button mat-raised-button (click)="userLogin()">Enter</button>
         </div>
 
       </form>
