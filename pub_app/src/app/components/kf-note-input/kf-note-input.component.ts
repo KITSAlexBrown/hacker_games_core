@@ -9,6 +9,7 @@ import { ActivatedRoute } from '@angular/router';
 export class KfNoteInputComponent implements OnInit {
 
     public rating: number;
+    public noteId: number;
     public note: string;
 
     constructor(private route: ActivatedRoute) { }
@@ -16,6 +17,8 @@ export class KfNoteInputComponent implements OnInit {
     ngOnInit() {
         if (this.route.snapshot.queryParams['rating']) {
             this.rating = +this.route.snapshot.queryParams['rating'];
+        } else if (this.route.snapshot.queryParams['noteId']) {
+            this.noteId = +this.route.snapshot.queryParams['noteId'];
         }
     }
 

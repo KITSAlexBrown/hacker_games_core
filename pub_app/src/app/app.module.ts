@@ -43,6 +43,7 @@ import {
   MatTooltipModule,
   MatStepperModule,
 } from '@angular/material';
+import { KfNotesViewComponent } from './components/kf-notes-view/kf-notes-view.component';
 
 @NgModule({
   exports: [
@@ -87,6 +88,7 @@ const appRoutes: Routes = [
   { path: 'check-in', component: KfCheckInComponent},
   { path: 'notes', 
       children: [
+          { path: '', component: KfNotesViewComponent},
           { path: 'create', component: KfNoteInputComponent },
           { path: 'edit', component: KfNoteInputComponent }
       ]
@@ -99,7 +101,8 @@ const appRoutes: Routes = [
     AppComponent,
     KfCheckInComponent,
     KfHomeComponent,
-    KfNoteInputComponent
+    KfNoteInputComponent,
+    KfNotesViewComponent
   ],
   imports: [
     FormsModule,
