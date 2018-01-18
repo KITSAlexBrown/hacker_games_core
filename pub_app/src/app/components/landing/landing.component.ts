@@ -8,17 +8,18 @@ import { Router } from '@angular/router';
   styleUrls: ['./landing.component.scss']
 })
 export class LandingComponent  {
-  public name: string = "";
-  public email: string = "";
-  public password: string = "";
+  public name: string = "Superman";
+  public email: string = "superman@hero.co";
+  public password: string = "xxxxxxxx";
 
   constructor(private router: Router, private loginService: LoginService) {
   }
 
   public userLogin() {
     console.log(this.name);
-    this.loginService.userAccess("Superman", "test", "superma@action.it").subscribe(res => {
-      if (res) {
+    this.loginService.userAccess(this.name, this.password, this.email).subscribe(res => {
+      console.log("login result", res);
+      if (res.value) {
         this.router.navigateByUrl('');
       }
     })

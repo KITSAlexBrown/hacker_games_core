@@ -1,3 +1,4 @@
+import { UsersService } from "./providers/users.service";
 import { LoginService } from "./providers/login.service";
 import { LandingComponent } from "./components/landing/landing.component";
 // Core modules
@@ -46,6 +47,7 @@ import {
   MatStepperModule,
 } from '@angular/material';
 import { KfIconLink } from './components/kf-icon-link/kf-icon-link.component';
+import { ChatComponent } from './components/chat/chat.component';
 @NgModule({
   exports: [
     MatAutocompleteModule,
@@ -86,6 +88,7 @@ export class DemoMaterialModule {}
 const appRoutes: Routes = [
   { path: 'landing', component: LandingComponent},
   { path: '', component: KfTabComponent},
+  { path: 'chat', component: ChatComponent},
   { path: 'check-in', component: KfCheckInComponent}
 ]
 //
@@ -96,7 +99,8 @@ const appRoutes: Routes = [
     LandingComponent,
     KfCheckInComponent,
     KfTabComponent,
-    KfIconLink
+    KfIconLink,
+    ChatComponent
   ],
   imports: [
     RouterModule.forRoot(
@@ -108,7 +112,7 @@ const appRoutes: Routes = [
       FormsModule
   ],
   schemas: [ NO_ERRORS_SCHEMA ],
-  providers: [LoginService],
+  providers: [LoginService, UsersService],
   bootstrap: [AppComponent]
 })
 export class AppModule {
