@@ -1,4 +1,4 @@
-# KF MOOD TRACKER APP
+# Big Voice - the Kingfisher Mood tracker app
 
 ![Big Voice - Mood Tracking App](img/logo.png "Big Voice - Mood Tracking App")
 
