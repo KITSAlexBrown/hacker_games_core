@@ -8,18 +8,15 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class KfNoteInputComponent implements OnInit {
 
-    private sub: any;
     public rating: number;
     public note: string;
 
     constructor(private route: ActivatedRoute) { }
 
     ngOnInit() {
-        this.sub = this.route.params.subscribe(params => {
-            if (params['rating']) {
-                this.rating = +params['rating'];
-            }
-        });
+        if (this.route.snapshot.queryParams['rating']) {
+            this.rating = +this.route.snapshot.queryParams['rating'];
+        }
     }
 
     sumbitNote() {

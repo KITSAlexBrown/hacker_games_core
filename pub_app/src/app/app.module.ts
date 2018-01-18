@@ -2,12 +2,14 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule, NO_ERRORS_SCHEMA } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { FormsModule } from '@angular/forms';
 // Style modules
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 // Components
 import { AppComponent } from './app.component';
 import { KfCheckInComponent } from './components/kf-check-in/kf-check-in.component';
 import { KfHomeComponent } from './components/home/kf-home.component';
+import { KfNoteInputComponent } from './components/kf-note-input/kf-note-input.component';
 import {
   MatAutocompleteModule,
   MatButtonModule,
@@ -41,7 +43,7 @@ import {
   MatTooltipModule,
   MatStepperModule,
 } from '@angular/material';
-import { KfNoteInputComponent } from './components/kf-note-input/kf-note-input.component';
+
 @NgModule({
   exports: [
     MatAutocompleteModule,
@@ -76,7 +78,7 @@ import { KfNoteInputComponent } from './components/kf-note-input/kf-note-input.c
     MatToolbarModule,
     MatTooltipModule,
   ],
-  declarations: [KfNoteInputComponent]
+  declarations: []
 })
 export class DemoMaterialModule {}
 
@@ -96,15 +98,17 @@ const appRoutes: Routes = [
   declarations: [
     AppComponent,
     KfCheckInComponent,
-    KfHomeComponent
+    KfHomeComponent,
+    KfNoteInputComponent
   ],
   imports: [
+    FormsModule,
     RouterModule.forRoot(
       appRoutes
     ),
     BrowserModule,
     DemoMaterialModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
   ],
   schemas: [ NO_ERRORS_SCHEMA ],
   providers: [],
