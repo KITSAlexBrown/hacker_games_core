@@ -1,3 +1,8 @@
-<a [routerLink]="route">  
-    <i class="fa fa-cog fa-3x" aria-hidden="true"></i>
-</a>
+<button mat-button [matMenuTriggerFor]="menu">Menu</button>
+<mat-menu #menu="matMenu">
+  <button mat-menu-item>
+    <a [routerLink]="route">  
+        <i class="fa fa-user fa-3x" aria-hidden="true"></i>
+    </a></button>
+</mat-menu>
+
