@@ -1,3 +1,5 @@
+import { LoginService } from "./providers/login.service";
+import { LandingComponent } from "./components/landing/landing.component";
 // Core modules
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule, NO_ERRORS_SCHEMA } from '@angular/core';
@@ -7,6 +9,8 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 // Components
 import { AppComponent } from './app.component';
 import { KfCheckInComponent } from './components/kf-check-in/kf-check-in.component';
+import { FormsModule } from '@angular/forms';
+
 import { KfTabComponent } from './components/kf-tab/kf-tab.component';
 import {
   MatAutocompleteModule,
@@ -80,6 +84,7 @@ import { KfIconLink } from './components/kf-icon-link/kf-icon-link.component';
 export class DemoMaterialModule {}
 
 const appRoutes: Routes = [
+  { path: 'landing', component: LandingComponent},
   { path: '', component: KfTabComponent},
   { path: 'check-in', component: KfCheckInComponent}
 ]
@@ -88,6 +93,7 @@ const appRoutes: Routes = [
 @NgModule({
   declarations: [
     AppComponent,
+    LandingComponent,
     KfCheckInComponent,
     KfTabComponent,
     KfIconLink
@@ -98,10 +104,11 @@ const appRoutes: Routes = [
     ),
     BrowserModule,
     DemoMaterialModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+      FormsModule
   ],
   schemas: [ NO_ERRORS_SCHEMA ],
-  providers: [],
+  providers: [LoginService],
   bootstrap: [AppComponent]
 })
 export class AppModule {

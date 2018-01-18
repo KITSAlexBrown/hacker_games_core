@@ -3,11 +3,14 @@
 
 :host {
     .landing-container {
-        padding: 40px;
         display: flex;
         justify-content: center;
         align-items: center;
         height: 100vh;
+    }
+
+    .landing-center {
+        max-width: 300px;
     }
 
     h1 {

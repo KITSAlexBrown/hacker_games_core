@@ -1,24 +1,23 @@
 <div class="landing-container ">
   <div class="landing-center">
     <h1 class="landing-element">Welcome to MoodoMetre!</h1>
-    <form class="landing-element">
-      <div class="md-form">
-        <i class="fa fa-user prefix"></i>
-        <input mdbActive type="text" class="form-control" id="form8" name="name" mdbInputValidate>
-        <label class="active" for="form9">Type your name</label>
-      </div>
-      <div class="md-form">
-        <i class="fa fa-envelope prefix"></i>
-        <input mdbActive type="email" class="form-control" id="form9" name="email" mdbInputValidate>
-        <label class="active" for="form9">Type your e-mail</label>
-      </div>
+    <form class="example-form">
+        <mat-form-field class="example-full-width">
+          <input name="name" matInput placeholder="Type your name" [(ngModel)]="name" required>
+        </mat-form-field>
+        <mat-form-field>
+            <input name="email" matInput placeholder="Enter your email" required [(ngModel)]="email">
+          </mat-form-field>
+        <mat-form-field>
+            <input name="password" matInput placeholder="Enter your password" type="password" required [(ngModel)]="password">
 
-      <div class="md-form">
-        <i class="fa fa-lock prefix"></i>
-        <input mdbActive type="password" class="form-control" id="form10" name="password" mdbInputValidate>
-        <label class="active" for="form10">Type your password</label>
-      </div>
-    </form>
+          </mat-form-field>
+        <div>
+          <button mat-raised-button (click)="userLogin()">Enter</button>
+        </div>
+
+      </form>
+
   </div>
 
 </div>
