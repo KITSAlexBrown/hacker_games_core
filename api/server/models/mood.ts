@@ -2,29 +2,35 @@ import { mongoose } from "../config/database";
 import { Document, Model, Schema } from "mongoose";
 
 // Base model interface
-export interface INote extends Document {
-  note: string;
+export interface IMood extends Document {
+  mood: number;
   create?: Date;
-  user: {}
+  user: {};
+  note: {};
 }
 
 // Interaction model
-export interface INoteModel extends Model<INote> {
+export interface IMoodModel extends Model<IMood> {
   // updateUserCheck(id: {}, date: Date): Promise<{ nModified: number }>
 }
 
 // Model Schema
 const schema = new Schema({
-  note: String,
+  mood: Number,
   create: {
       type: Date,
       "default": Date.now
   },
   user: {
-      type: Schema.Types.ObjectId,
-      ref: 'User'
+    type: Schema.Types.ObjectId,
+    ref: 'User',
+    required: true,
+  },
+  note: {
+    type: Schema.Types.ObjectId,
+    ref: 'Note',
   }
 });
 
 // Export for consumption
-export const Note = mongoose.model<INote>("Note", schema) as INoteModel;
+export const Mood = mongoose.model<IMood>("Mood", schema) as IMoodModel;

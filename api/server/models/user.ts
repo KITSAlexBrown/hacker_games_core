@@ -16,6 +16,7 @@ export interface IUserModel extends Model<IUser> {
   updateUserCheck(id: {}, date: Date): Promise<{ nModified: number }>
 }
 
+
 // Model Schema
 const schema = new Schema({
   age: {
@@ -34,7 +35,11 @@ const schema = new Schema({
   },
   email_address: {
     type: String,
-    required: true
+    required: true,
+    index: {
+      unique: true, 
+      dropDups: true
+    }
   },
   credential: {
     type: String,

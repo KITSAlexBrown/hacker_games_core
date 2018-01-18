@@ -1,10 +1,10 @@
 import { Router, Request, Response } from "express";
-import { User } from "../models";
+import { Mood } from "../models";
 
 /**
  * User router 
  */
-export class UsersRouter {
+export class MoodsRouter {
 
     // Init router
     private router: Router = Router();
@@ -30,8 +30,8 @@ export class UsersRouter {
          *       403:
          *         description: Forbidden
          */
-        this.router.get("/users", async(request: Request, response: Response) => {
-            const users = await User.find({}).exec();
+        this.router.get("/moods", async(request: Request, response: Response) => {
+            const users = await Mood.find({}).exec();
             response.json(users)
         });
 
@@ -53,33 +53,9 @@ export class UsersRouter {
          *       403:
          *         description: Forbidden
          */
-        this.router.post("/users", async(request: Request, response: Response) => {
-            const author = await User.create(request.body);
+        this.router.post("/moods", async(request: Request, response: Response) => {
+            const author = await Mood.create(request.body);
             response.status(200).json(author);
-        });
-
-
-        /**
-         * @swagger
-         * /api/users/authenticate/noonce:
-         *   get:
-         *     tags:
-         *      - User
-         *     description:
-         *      Noonce for a certain user
-         *     produces:
-         *       - application/json
-         *     responses:
-         *       200:
-         *         description: Noonce
-         *       400:
-         *         description: Invalid request
-         *       403:
-         *         description: Forbidden
-         */
-        this.router.get("/users/authenticate/noonce", async(request: Request, response: Response) => {
-            const noonce = await User.find({"email_address": request.query.email}).exec();
-            response.json(noonce)
         });
 
         /**
@@ -100,13 +76,12 @@ export class UsersRouter {
          *       403:
          *         description: Forbidden
          */
-        this.router.post("/users/authenticate", async(request: Request, response: Response) => {            
+        this.router.post("/moods/id/:id", async(request: Request, response: Response) => {            
             let noonce = request.body.noonce
             let credential = request.body.credential
             let email = request.body.email_address
-            const user = await User.findOne({
+            const user = await Mood.findOne({
                     "email_address": email, 
-                    "password": credential 
                 }).exec();
             response.json(user)
         });
