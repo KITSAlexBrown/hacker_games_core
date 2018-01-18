@@ -10,10 +10,11 @@ export interface IMood extends Document {
   note: any;
   note_txt: string;
   sentiment_score: number;
-  sentiment_positive: Sentiment;
-  sentiment_negative: Sentiment;
+  sentiment_positive: string[];
+  sentiment_negative: string[];
 }
 
+//
 export interface Sentiment extends Document{
   score: number;
   comparative: number;
@@ -37,7 +38,10 @@ const schema = new Schema({
     type: Schema.Types.ObjectId,
     ref: 'User',
     required: true,
-  }
+  },
+  sentiment_score: Number,
+  sentiment_positive: [String],
+  sentiment_negative: [String]
 });
 
 // Export for consumption

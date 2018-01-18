@@ -1,5 +1,6 @@
 import { Router, Request, Response } from "express";
 import { User } from "../models";
+import { addMeta } from "./index";
 
 /**
  * User router 
@@ -32,7 +33,7 @@ export class UsersRouter {
          */
         this.router.get("/users", async(request: Request, response: Response) => {
             const users = await User.find({}).exec();
-            response.json(users)
+            response.json(addMeta(users, request))
         });
 
                 /**
@@ -54,8 +55,8 @@ export class UsersRouter {
          *         description: Forbidden
          */
         this.router.post("/users", async(request: Request, response: Response) => {
-            const author = await User.create(request.body);
-            response.status(200).json(author);
+            const users = await User.create(request.body);
+            response.status(200).json(addMeta(users, request));
         });
 
         /**
@@ -80,7 +81,7 @@ export class UsersRouter {
             // TODO add in token validation         
             let id = request.route.id
             const user = await User.findOne({ "id": id }).exec();
-            response.json(user)
+            response.json(addMeta(user, request))
         });
 
         /**
@@ -103,7 +104,7 @@ export class UsersRouter {
          */
         this.router.get("/users/authenticate/noonce", async(request: Request, response: Response) => {
             const noonce = await User.find({"email_address": request.query.email}).exec();
-            response.json(noonce)
+            response.json(addMeta(noonce, request))
         });
 
         /**
@@ -132,7 +133,7 @@ export class UsersRouter {
                     "email_address": email, 
                     "password": credential 
                 }).exec();
-            response.json(user)
+            response.json(addMeta(user, request))
         });
 
         //

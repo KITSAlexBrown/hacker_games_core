@@ -1,5 +1,6 @@
 import { Router, Request, Response } from "express";
 import { Mood, Note } from "../models";
+import { addMeta } from "./index";
 
 /**
  * User router 
@@ -31,8 +32,8 @@ export class NotesRouter {
          *         description: Forbidden
          */
         this.router.get("/notes", async(request: Request, response: Response) => {
-            const users = await Note.find({}).exec();
-            response.json(users)
+            const notes = await Note.find({}).exec();
+            response.json(addMeta(notes, request))
         });
 
         /**
@@ -54,12 +55,9 @@ export class NotesRouter {
          *         description: Forbidden
          */
         this.router.get("/notes/user/:id", async(request: Request, response: Response) => {            
-            // TODO add in token validation
             let id = request.params.id
-            //
-            const mood = await Note.find({ "user": id }).exec();
-            //
-            response.json(mood)
+            const notes = await Note.find({ "user": id }).exec();
+            response.json(addMeta(notes, request))
         });
 
         /**
@@ -80,13 +78,12 @@ export class NotesRouter {
          *       403:
          *         description: Forbidden
          */
-        this.router.post("/notes/id/:id", async(request: Request, response: Response) => {  
-            // TODO add in token validation         
+        this.router.get("/notes/id/:id", async(request: Request, response: Response) => {  
             let id = request.route.query.id
-            const user = await Note.findOne({ "id": id }).exec();
-            response.json(user)
+            const note = await Note.findOne({ "id": id }).exec();
+            response.json(addMeta(note, request))
         });
-
+        
         //
         return this.router;
     }
