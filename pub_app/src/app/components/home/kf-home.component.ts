@@ -18,7 +18,7 @@ export class KfHomeComponent {
             label: 'tracker'
         },
         {
-            path: 'mood',
+            path: 'check-in',
             label: 'mood'
         },
         {

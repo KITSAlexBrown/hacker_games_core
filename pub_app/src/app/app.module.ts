@@ -79,7 +79,8 @@ import {
 export class DemoMaterialModule {}
 
 const appRoutes: Routes = [
-  { path: '', component: KfHomeComponent}
+  { path: '', component: KfHomeComponent},
+  { path: 'check-in', component: KfCheckInComponent}
 ]
 //
 //
