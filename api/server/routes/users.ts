@@ -58,6 +58,30 @@ export class UsersRouter {
             response.status(200).json(author);
         });
 
+        /**
+         * @swagger
+         * /api/users/id/:id:
+         *   get:
+         *     tags:
+         *      - User
+         *     description:
+         *      Get a user
+         *     produces:
+         *       - application/json
+         *     responses:
+         *       200:
+         *         description: Users
+         *       400:
+         *         description: Invalid request
+         *       403:
+         *         description: Forbidden
+         */
+        this.router.get("/users/id/:id", async(request: Request, response: Response) => {  
+            // TODO add in token validation         
+            let id = request.route.id
+            const user = await User.findOne({ "id": id }).exec();
+            response.json(user)
+        });
 
         /**
          * @swagger

@@ -1,12 +1,23 @@
 import { mongoose } from "../config/database";
 import { Document, Model, Schema } from "mongoose";
+import { Note } from "./index";
 
 // Base model interface
 export interface IMood extends Document {
   mood: number;
   create?: Date;
   user: {};
-  note: {};
+  note: any;
+  note_txt: string;
+  sentiment_score: number;
+  sentiment_positive: Sentiment;
+  sentiment_negative: Sentiment;
+}
+
+export interface Sentiment extends Document{
+  score: number;
+  comparative: number;
+  words: string[];
 }
 
 // Interaction model
@@ -17,6 +28,7 @@ export interface IMoodModel extends Model<IMood> {
 // Model Schema
 const schema = new Schema({
   mood: Number,
+  note_txt: String,
   create: {
       type: Date,
       "default": Date.now
@@ -25,10 +37,6 @@ const schema = new Schema({
     type: Schema.Types.ObjectId,
     ref: 'User',
     required: true,
-  },
-  note: {
-    type: Schema.Types.ObjectId,
-    ref: 'Note',
   }
 });
 

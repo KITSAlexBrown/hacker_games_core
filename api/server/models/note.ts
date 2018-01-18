@@ -5,7 +5,8 @@ import { Document, Model, Schema } from "mongoose";
 export interface INote extends Document {
   note: string;
   create?: Date;
-  user: {}
+  mood: {};
+  user: {};
 }
 
 // Interaction model
@@ -23,7 +24,12 @@ const schema = new Schema({
   user: {
       type: Schema.Types.ObjectId,
       ref: 'User'
-  }
+  },
+  mood: {
+    type: Schema.Types.ObjectId,
+    ref: 'Mood',
+    required: true
+}
 });
 
 // Export for consumption

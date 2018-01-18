@@ -2,15 +2,18 @@ import * as express from "express";
 import { json, urlencoded } from "body-parser";
 import * as http from "http";
 import * as path from "path";
+import * as cors from "cors";
 
 import { UsersRouter } from "./routes/users";
 import { MoodsRouter } from "./routes/moods";
+import { NotesRouter } from "./routes/notes";
 
 import { APIDocsRouter } from "./routes/swagger";
 import { IResponse } from "./models/index";
 
 const app: express.Application = express();
 
+app.use(cors());
 app.use(json());
 app.use(urlencoded({
     extended: true
@@ -28,7 +31,7 @@ app.use("/api", new UsersRouter().getRouter());
 // Moods
 app.use("/api", new MoodsRouter().getRouter());
 // Notes
-app.use("/api", new MoodsRouter().getRouter());
+app.use("/api", new NotesRouter().getRouter());
 
 //
 app.use("/api/swagger", new APIDocsRouter().getRouter());
@@ -52,16 +55,6 @@ app.use((err: Error & { status: number }, request: express.Request, response: ex
     };
     response.json(responseCompose)
 });
-
-///
-var handleE11000 = function(error, res, next) {
-    if (error.name === 'MongoError' && error.code === 11000) {
-      next(new Error('There was a duplicate key error'));
-    } else {
-      next();
-    }
-  };
-  
 
 const server: http.Server = app.listen(process.env.PORT || 3000);
 
