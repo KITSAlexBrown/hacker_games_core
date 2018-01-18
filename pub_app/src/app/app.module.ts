@@ -1,12 +1,11 @@
 // Core modules
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule, NO_ERRORS_SCHEMA } from '@angular/core';
+import { RouterModule, Routes } from '@angular/router';
 // Style modules
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 // Components
 import { AppComponent } from './app.component';
-import { LandingComponent } from './components/landing/landing.component';
-
 import { KfHomeComponent } from './components/home/kf-home.component';
 import {
   MatAutocompleteModule,
@@ -77,15 +76,21 @@ import {
   ]
 })
 export class DemoMaterialModule {}
+
+const appRoutes: Routes = [
+  { path: '', component: KfHomeComponent}
+]
 //
 //
 @NgModule({
   declarations: [
     AppComponent,
-    LandingComponent,
     KfHomeComponent
   ],
   imports: [
+    RouterModule.forRoot(
+      appRoutes
+    ),
     BrowserModule,
     DemoMaterialModule,
     BrowserAnimationsModule
