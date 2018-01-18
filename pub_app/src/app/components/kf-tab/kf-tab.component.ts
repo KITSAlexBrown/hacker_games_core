@@ -1,12 +1,12 @@
 import { Component } from "@angular/core";
 
 @Component({
-    selector: 'kf-home',
-    templateUrl: './kf-home.component.html',
-    styleUrls: ['./kf-home.component.scss']
+    selector: 'kf-tab',
+    templateUrl: './kf-tab.component.html',
+    styleUrls: ['./kf-tab.component.scss']
 })
 
-export class KfHomeComponent {
+export class KfTabComponent {
     navLinks: Link[];
     constructor() {
         this.navLinks = [ {
