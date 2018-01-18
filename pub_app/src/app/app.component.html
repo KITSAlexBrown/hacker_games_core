@@ -1,3 +1,3 @@
-<kf-icon-link class="kf-link" [route]="''" *ngIf="loginService.userLogged"></kf-icon-link>
+<div *ngIf="loginService.userLogged" class="header-margin"></div>
 <router-outlet></router-outlet>
 <kf-tab *ngIf="loginService.userLogged"></kf-tab>
