@@ -8,6 +8,7 @@ import { RouterModule, Routes } from '@angular/router';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 // Components
 import { AppComponent } from './app.component';
+import { KfCheckInComponent } from './components/kf-check-in/kf-check-in.component';
 import { KfHomeComponent } from './components/home/kf-home.component';
 import { FormsModule } from '@angular/forms';
 
@@ -83,7 +84,8 @@ export class DemoMaterialModule {}
 
 const appRoutes: Routes = [
   { path: '', component: KfHomeComponent},
-  { path: 'landing', component: LandingComponent}
+  { path: 'landing', component: LandingComponent},
+  { path: 'check-in', component: KfCheckInComponent}
 ]
 //
 //
@@ -91,7 +93,8 @@ const appRoutes: Routes = [
   declarations: [
     AppComponent,
     KfHomeComponent,
-    LandingComponent
+    LandingComponent,
+    KfCheckInComponent
   ],
   imports: [
     RouterModule.forRoot(
