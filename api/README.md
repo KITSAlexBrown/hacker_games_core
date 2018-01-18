@@ -1,4 +1,4 @@
-# KF Mood tracker API
+#KF Mood tracker API
 
 ## Installation
 
@@ -6,6 +6,14 @@
 npm install
 npm start
 ```
+
+## Install docker and mongo
+
+```bash
+docker run --name some-mongo -v /Users/alex.brown/Development/hacker_games/hacker_games_core:/data/db -d mongo 
+```
+
+Data will get backed up to the data dir when we do an export
 
 ## URL
 
