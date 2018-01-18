@@ -1,62 +1,65 @@
 import { Router, Request, Response } from "express";
-import { Author } from "../../models/author/model";
+import { User } from "../models";
 
-export class AuthorRouter {
+/**
+ * User router 
+ */
+export class UsersRouter {
 
+    // Init router
     private router: Router = Router();
 
+    // New sub router for users 
     getRouter(): Router {
 
         /**
          * @swagger
-         * /api/author:
+         * /api/users:
          *   get:
          *     tags:
-         *      - Author
+         *      - User
          *     description:
-         *      List of all authors registered in system.
+         *      List of all users registered in system.
          *     produces:
          *       - application/json
          *     responses:
          *       200:
-         *         description: Authors
+         *         description: Users
          *       400:
          *         description: Invalid request
          *       403:
          *         description: Forbidden
          */
-        this.router.get("/author", async(request: Request, response: Response) => {
-
-            const authors = await Author.find({}).exec();
-            
+        this.router.get("/users", async(request: Request, response: Response) => {
+            const authors = await User.find({}).exec();
             response.json(authors)
         });
 
         /**
          * @swagger
-         * /api/author:
+         * /api/user:
          *   post:
          *     tags:
-         *      - Author
+         *      - User
          *     description:
-         *      Create new author.
+         *      Create new user.
          *     produces:
          *       - application/json
          *     responses:
          *       200:
-         *         description: Author
+         *         description: User
          *       400:
          *         description: Invalid request
          *       403:
          *         description: Forbidden
          */
-        this.router.post("/author", async(request: Request, response: Response) => {
-
-            const author = await Author.create(request.body);
-
+        this.router.post("/users", async(request: Request, response: Response) => {
+            const author = await User.create(request.body);
+            console.log("User has been added !")
             response.status(200).json(author);
         });
 
+        //
         return this.router;
     }
 }
