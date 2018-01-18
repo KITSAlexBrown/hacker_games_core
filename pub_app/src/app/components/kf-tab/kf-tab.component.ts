@@ -18,7 +18,7 @@ export class KfTabComponent {
             label: 'tracker'
         },
         {
-            path: 'mood',
+            path: 'check-in',
             label: 'mood'
         },
         {
