@@ -10,7 +10,7 @@ npm start
 ## Install docker and mongo
 
 ```bash
-docker run --name some-mongo -v /Users/alex.brown/Development/hacker_games/hacker_games_core:/data/db -d mongo 
+ docker run --name api-mongo -v /data/db -p 27017:27017 -d mongo 
 ```
 
 Data will get backed up to the data dir when we do an export
