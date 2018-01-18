@@ -1,0 +1,37 @@
+<div class="jumbotron text-center">
+    <h1>How are you feeling today?</h1>
+</div>
+
+<ul class="col-sm-8">
+    <li [ngClass]="{ 'selected': moodRating === 5 }">
+        <button (click)="setMoodRating(5)">
+            <p><span><img src="https://cdn.shopify.com/s/files/1/1061/1924/products/Emoji_Icon_-_Happy_large.png?v=1513251069" alt="Very happy face" height="42" width="42"></span>  Today is awesome!</p>
+        </button>
+    </li>
+    <li [ngClass]="{ 'selected': moodRating === 4 }">
+        <button (click)="setMoodRating(4)">
+        <p><span><img src="https://cdn.shopify.com/s/files/1/1061/1924/files/Slightly_Smiling_Face_Emoji.png?9898922749706957214" alt="Happy face" height="42" width="42"></span>  I'm feeling good</p>
+        </button>
+    </li>
+    <li [ngClass]="{ 'selected': moodRating === 3 }">
+        <button (click)="setMoodRating(3)">
+        <p><span><img src="http://cdn.shopify.com/s/files/1/1061/1924/products/Neutral_Face_Emoji_grande.png?v=1480481054" alt="Neutral face" height="42" width="42"></span>  I'm coping</p>
+        </button>
+    </li>
+    <li [ngClass]="{ 'selected': moodRating === 2 }">
+        <button (click)="setMoodRating(2)">
+        <p><span><img src="https://cdn.shopify.com/s/files/1/1061/1924/products/Unhappy_Face_Emoji_Icon_ios10_large.png?v=1513251068" alt="Sad face" height="42" width="42"></span>  I'm not coping very well</p>
+        </button>
+    </li>
+    <li [ngClass]="{ 'selected': moodRating === 1 }">
+        <button (click)="setMoodRating(1)">
+        <p><span><img src="http://moziru.com/images/sadness-clipart-disappointed-face-2.png" alt="Crying face" height="42" width="42"></span>  I feel overwhelmed</p>
+        </button>
+    </li>
+</ul>
+
+<div class="col-sm-6" align="center">
+    <button type="submit" class="btn btn-default">Submit</button>
+</div>
+
+

@@ -5,12 +5,14 @@ import { NgModule, NO_ERRORS_SCHEMA } from '@angular/core';
 import { MDBBootstrapModule } from 'angular-bootstrap-md';
 // Components
 import { AppComponent } from './app.component';
+import { KfCheckInComponent } from './components/kf-check-in/kf-check-in.component';
 
 //
 //
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    KfCheckInComponent
   ],
   imports: [
     BrowserModule,
