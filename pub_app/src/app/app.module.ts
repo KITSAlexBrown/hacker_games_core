@@ -4,14 +4,16 @@ import { LandingComponent } from "./components/landing/landing.component";
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule, NO_ERRORS_SCHEMA } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { FormsModule } from '@angular/forms';
 // Style modules
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 // Components
 import { AppComponent } from './app.component';
 import { KfCheckInComponent } from './components/kf-check-in/kf-check-in.component';
-import { FormsModule } from '@angular/forms';
-
+import { KfNoteInputComponent } from './components/kf-note-input/kf-note-input.component';
 import { KfTabComponent } from './components/kf-tab/kf-tab.component';
+import { KfNotesViewComponent } from './components/kf-notes-view/kf-notes-view.component';
+import { KfIconLink } from './components/kf-icon-link/kf-icon-link.component';
 import {
   MatAutocompleteModule,
   MatButtonModule,
@@ -45,7 +47,7 @@ import {
   MatTooltipModule,
   MatStepperModule,
 } from '@angular/material';
-import { KfIconLink } from './components/kf-icon-link/kf-icon-link.component';
+
 @NgModule({
   exports: [
     MatAutocompleteModule,
@@ -79,14 +81,22 @@ import { KfIconLink } from './components/kf-icon-link/kf-icon-link.component';
     MatTabsModule,
     MatToolbarModule,
     MatTooltipModule,
-  ]
+  ],
+  declarations: []
 })
 export class DemoMaterialModule {}
 
 const appRoutes: Routes = [
+  { path: '', component:  KfTabComponent},
   { path: 'landing', component: LandingComponent},
-  { path: '', component: KfTabComponent},
-  { path: 'check-in', component: KfCheckInComponent}
+  { path: 'check-in', component: KfCheckInComponent},
+  { path: 'notes', 
+      children: [
+          { path: '', component: KfNotesViewComponent},
+          { path: 'create', component: KfNoteInputComponent },
+          { path: 'edit', component: KfNoteInputComponent }
+      ]
+  }
 ]
 //
 //
@@ -95,17 +105,19 @@ const appRoutes: Routes = [
     AppComponent,
     LandingComponent,
     KfCheckInComponent,
+    KfNoteInputComponent,
+    KfNotesViewComponent,
     KfTabComponent,
     KfIconLink
   ],
   imports: [
+    FormsModule,
     RouterModule.forRoot(
       appRoutes
     ),
     BrowserModule,
     DemoMaterialModule,
-    BrowserAnimationsModule,
-      FormsModule
+    BrowserAnimationsModule
   ],
   schemas: [ NO_ERRORS_SCHEMA ],
   providers: [LoginService],
