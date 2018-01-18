@@ -136,7 +136,7 @@ export class MoodsRouter {
             const mood = await Mood.find({ "user": id }).exec();
             response.json(addMeta(mood, request))
         });
-        
+
         /**
          * @swagger
          * /api/moods/user/:id/sentiment:
@@ -217,8 +217,9 @@ export class MoodsRouter {
             let id = request.params.id
             // Mood
             let mood: IMood = request.body
-            let language = speak.sentiment.analyze(request.body.note_txt)  
+            // let language = speak.sentiment.analyze(request.body.note_txt)  
             //
+            /**
             if(language){
                 let score: number = language['score']
                 let positive: string[] = language['positive']['words']
@@ -227,6 +228,7 @@ export class MoodsRouter {
                 mood.sentiment_positive = positive
                 mood.sentiment_negative = negative
             }
+            **/
             ///
             const moodUpdate = await Mood.update({"_id": id}, mood )
             //
