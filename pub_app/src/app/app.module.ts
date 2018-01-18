@@ -6,6 +6,7 @@ import { RouterModule, Routes } from '@angular/router';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 // Components
 import { AppComponent } from './app.component';
+import { KfCheckInComponent } from './components/kf-check-in/kf-check-in.component';
 import { KfHomeComponent } from './components/home/kf-home.component';
 import {
   MatAutocompleteModule,
@@ -78,13 +79,15 @@ import {
 export class DemoMaterialModule {}
 
 const appRoutes: Routes = [
-  { path: '', component: KfHomeComponent}
+  { path: '', component: KfHomeComponent},
+  { path: 'check-in', component: KfCheckInComponent}
 ]
 //
 //
 @NgModule({
   declarations: [
     AppComponent,
+    KfCheckInComponent,
     KfHomeComponent
   ],
   imports: [
