@@ -1,2 +1,3 @@
+<kf-icon-link class="kf-link" [route]="''" *ngIf="loginService.userLogged"></kf-icon-link>
 <router-outlet></router-outlet>
-<kf-home *ngIf="loginService.userLogged"></kf-home>
+<kf-tab *ngIf="loginService.userLogged"></kf-tab>
