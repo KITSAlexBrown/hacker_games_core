@@ -1,3 +1,4 @@
+import { LandingComponent } from "./components/landing/landing.component";
 // Core modules
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule, NO_ERRORS_SCHEMA } from '@angular/core';
@@ -7,6 +8,7 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 // Components
 import { AppComponent } from './app.component';
 import { KfHomeComponent } from './components/home/kf-home.component';
+
 import {
   MatAutocompleteModule,
   MatButtonModule,
@@ -85,7 +87,8 @@ const appRoutes: Routes = [
 @NgModule({
   declarations: [
     AppComponent,
-    KfHomeComponent
+    KfHomeComponent,
+    LandingComponent
   ],
   imports: [
     RouterModule.forRoot(

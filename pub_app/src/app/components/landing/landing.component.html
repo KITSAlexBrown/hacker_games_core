@@ -1,24 +1,24 @@
 <div class="landing-container ">
   <div class="landing-center">
     <h1 class="landing-element">Welcome to MoodoMetre!</h1>
-    <form class="landing-element">
-      <div class="md-form">
-        <i class="fa fa-user prefix"></i>
-        <input mdbActive type="text" class="form-control" id="form8" name="name" mdbInputValidate>
-        <label class="active" for="form9">Type your name</label>
-      </div>
-      <div class="md-form">
-        <i class="fa fa-envelope prefix"></i>
-        <input mdbActive type="email" class="form-control" id="form9" name="email" mdbInputValidate>
-        <label class="active" for="form9">Type your e-mail</label>
-      </div>
+    <form class="example-form">
+        <mat-form-field class="example-full-width">
+          <input matInput placeholder="Type your name" >
+        </mat-form-field>
+        <mat-form-field>
+            <input matInput placeholder="Enter your email" [formControl]="email" required>
+            <mat-error *ngIf="email.invalid">{{getErrorMessage()}}</mat-error>
+          </mat-form-field>
+        <mat-form-field>
+            <input matInput placeholder="Enter your password" [type]="hide ? 'password' : 'text'">
+            <mat-icon matSuffix (click)="hide = !hide">{{hide ? 'visibility' : 'visibility_off'}}</mat-icon>
+          </mat-form-field>
+        <div>
+          <button mat-raised-button>Enter</button>
+        </div>
 
-      <div class="md-form">
-        <i class="fa fa-lock prefix"></i>
-        <input mdbActive type="password" class="form-control" id="form10" name="password" mdbInputValidate>
-        <label class="active" for="form10">Type your password</label>
-      </div>
-    </form>
+      </form>
+
   </div>
 
 </div>
