@@ -55,6 +55,7 @@ import { KfChatComponent } from './components/kf-chat/kf-chat.component';
 
 import { KfProfile } from "./components/kf-profile/kf-profile.component";
 import { KfGraphComponent } from "./components/kf-graph/kf-graph.component";
+import { KfTrackerComponent } from "./components/tracker/tracker.component";
 import { KfHeaderComponent } from "./components/kf-header/kf-header.component";
 @NgModule({
   exports: [
@@ -100,7 +101,8 @@ const appRoutes: Routes = [
   { path: 'chat', component: KfChatComponent},
   { path: 'check-in', component: KfCheckInComponent},
   { path: 'profile', component: KfProfile },
-  { path: 'notes',
+  { path: 'tracker', component: KfTrackerComponent},
+  { path: 'notes', 
       children: [
           { path: '', component: KfNotesViewComponent},
           { path: 'create', component: KfNoteInputComponent },
@@ -122,6 +124,7 @@ const appRoutes: Routes = [
     KfChatComponent,
     KfProfile,
     KfGraphComponent,
+    KfTrackerComponent
     KfHeaderComponent
   ],
   imports: [
