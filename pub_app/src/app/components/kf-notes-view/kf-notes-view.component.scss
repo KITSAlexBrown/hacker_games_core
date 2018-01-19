@@ -1,0 +1,29 @@
+:host {
+    h1 {
+        margin: 8px;
+        margin-left: 24px;
+        font-size: 24px;
+    }
+    .note-container {
+        height: 80px;
+        display: flex;
+        align-items: center;
+        .date {
+            margin-left: 16px;
+        }
+        .edit-button {
+          margin-left: auto;
+        }
+        .edit-icon {
+            width: 24px;
+        }
+        .note-txt {
+            margin-left: 16px;
+            text-overflow: ellipsis;
+        }
+        .rating {
+            font-size: 36px;
+            margin-left: 24px;
+        }
+    }
+}
