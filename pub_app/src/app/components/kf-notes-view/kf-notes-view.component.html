@@ -1,0 +1,6 @@
+<div *ngFor="let note of notes">
+    <p>
+        {{ note.mood }}  {{ note.note_txt }}  
+        <span><button mat-raised-button class="button" (click)="editNote(note._id)" type="submit">Edit</button></span>
+    </p>
+</div>

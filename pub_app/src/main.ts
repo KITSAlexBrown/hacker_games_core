@@ -3,6 +3,11 @@ import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
 
 import { AppModule } from './app/app.module';
 import { environment } from './environments/environment';
+import "rxjs/add/observable/of";
+import "rxjs/add/observable/from";
+import 'rxjs/add/operator/merge';
+import 'rxjs/add/operator/toArray';
+import 'rxjs/add/operator/map';
 
 if (environment.production) {
   enableProdMode();

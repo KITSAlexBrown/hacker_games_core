@@ -1,0 +1,45 @@
+<div class="mood">
+    <h1>Mood</h1>
+</div>
+
+<div class="background">
+    <ul class="list">
+        <li class="list-item green" [ngClass]="{ 'selected': moodRating === 5 }">
+            <button (click)="setMoodRating(5)">
+                <img src="../../../assets/images/smilies/smilie-5.png" alt="Very happy face" width="48">
+                <p class="list-text">Today is awesome!</p>
+            </button>
+        </li>
+        <li class="list-item yellow" [ngClass]="{ 'selected': moodRating === 4 }">
+            <button (click)="setMoodRating(4)">
+                <img src="../../../assets/images/smilies/smilie-4.png" alt="Happy face" width="48">
+                <p class="list-text">  I'm feeling good</p>
+            </button>
+        </li>
+        <li class="list-item orange" [ngClass]="{ 'selected': moodRating === 3 }">
+            <button (click)="setMoodRating(3)">
+                <img src="../../../assets/images/smilies/smilie-3.png" alt="Neutral face" width="48">
+                <p class="list-text">  I'm coping</p>
+            </button>
+        </li>
+        <li class="list-item red" [ngClass]="{ 'selected': moodRating === 2 }">
+            <button (click)="setMoodRating(2)">
+                <img src="../../../assets/images/smilies/smilie-2.png" alt="Sad face" width="48">
+                <p class="list-text">  I'm not coping very well</p>
+            </button>
+        </li>
+        <li class="list-item blue" [ngClass]="{ 'selected': moodRating === 1 }">
+            <button (click)="setMoodRating(1)">
+                <img src="../../../assets/images/smilies/smilie-1.png" alt="Crying face" width="48">
+                <p class="list-text">  I feel overwhelmed</p>
+            </button>
+        </li>
+    </ul>
+</div>
+<div class="submit-section">
+    <div>
+        <button mat-raised-button class="button" type="submit" (click)="submitRating()">Submit</button>
+    </div>
+</div>
+
+
