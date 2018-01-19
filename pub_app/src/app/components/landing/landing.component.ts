@@ -8,18 +8,23 @@ import { Router } from '@angular/router';
   styleUrls: ['./landing.component.scss']
 })
 export class LandingComponent  {
-  public name: string = "";
-  public email: string = "";
-  public password: string = "";
+  public email: string = "superman@hero.co";
+  public  showAccessForm: boolean = false;
 
   constructor(private router: Router, private loginService: LoginService) {
   }
 
+  ngAfterViewInit() {
+    setTimeout(() => {
+      this.showAccessForm = true;
+    }, 2000);
+  }
+
   public userLogin() {
-    console.log(this.name);
-    this.loginService.userAccess("Superman", "test", "superma@action.it").subscribe(res => {
-      if (res) {
-        this.router.navigateByUrl('/check-in');
+    this.loginService.userAccess(this.email).subscribe(res => {
+      console.log("login result", res["value"]);
+      if (res["value"] === true) {
+        this.router.navigateByUrl('');
       }
     })
   }
