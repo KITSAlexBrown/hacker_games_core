@@ -1,3 +1,4 @@
+import { UsersService } from "./providers/users.service";
 import { LoginService } from "./providers/login.service";
 import { LandingComponent } from "./components/landing/landing.component";
 // Core modules
@@ -15,7 +16,6 @@ import { KfCheckInComponent } from './components/kf-check-in/kf-check-in.compone
 import { KfNoteInputComponent } from './components/kf-note-input/kf-note-input.component';
 import { KfTabComponent } from './components/kf-tab/kf-tab.component';
 import { KfNotesViewComponent } from './components/kf-notes-view/kf-notes-view.component';
-import { KfIconLink } from './components/kf-icon-link/kf-icon-link.component';
 import { D3Service } from 'd3-ng2-service';
 import {
   MatAutocompleteModule,
@@ -50,6 +50,8 @@ import {
   MatTooltipModule,
   MatStepperModule,
 } from '@angular/material';
+import { KfIconLink } from './components/kf-icon-link/kf-icon-link.component';
+import { ChatComponent } from './components/chat/chat.component';
 
 import { KfProfile } from "./components/profile/profile.component";
 import { KfGraphComponent } from "./components/kf-graph/kf-graph.component";
@@ -94,9 +96,11 @@ export class DemoMaterialModule {}
 const appRoutes: Routes = [
   { path: '', component:  KfTabComponent},
   { path: 'landing', component: LandingComponent},
+  { path: '', component: KfTabComponent},
+  { path: 'chat', component: ChatComponent},
   { path: 'check-in', component: KfCheckInComponent},
   { path: 'profile', component: KfProfile },
-  { path: 'notes', 
+  { path: 'notes',
       children: [
           { path: '', component: KfNotesViewComponent},
           { path: 'create', component: KfNoteInputComponent },
@@ -115,6 +119,7 @@ const appRoutes: Routes = [
     KfNotesViewComponent,
     KfTabComponent,
     KfIconLink,
+    ChatComponent,
     KfProfile,
     KfGraphComponent
   ],
@@ -129,8 +134,7 @@ const appRoutes: Routes = [
     HttpClientModule
   ],
   schemas: [ NO_ERRORS_SCHEMA ],
-  providers: [LoginService,
-     D3Service],
+  providers: [LoginService, UsersService, D3Service],
   bootstrap: [AppComponent]
 })
 export class AppModule {
