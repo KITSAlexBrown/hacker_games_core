@@ -1,6 +1,7 @@
 import { Component, HostListener } from "@angular/core";
 import { D3Service, D3, Selection } from "d3-ng2-service";
 import { axisTop } from "d3-ng2-service/src/bundle-d3";
+import { Router } from "@angular/router";
 import * as results from "./stub-data";
 
 @Component({
@@ -13,6 +14,7 @@ export class KfGraphComponent {
     lineData: any[];
     private d3: D3;
     moodGraphArray: any[];
+    sentimentGraphArray: any[];
     width: number;
     height: number;
     margin: any;
@@ -24,12 +26,14 @@ export class KfGraphComponent {
         this.plotGraph();
     }
 
-    constructor(d3Service: D3Service) {
+    constructor(d3Service: D3Service, private route: Router) {
         this.moodGraphArray = [];
+        this.sentimentGraphArray = [];
         this.d3 = d3Service.getD3();
     }
     ngOnInit() {
-        this.mapApiData();
+        this.mapApiData(results.results.results.sentiment, this.sentimentGraphArray);
+        this.mapApiData(results.results.results.results, this.moodGraphArray);
         this.orientInitialScales();
         this.plotGraph();
     }
@@ -55,6 +59,10 @@ export class KfGraphComponent {
             .x((object) => { return Math.ceil(this.x(object.date)); })
             .y((object) => { return this.y(object.mood); });
 
+        let valueline2 = this.d3.line<MoodPoint>()
+            .x((object) => { return Math.ceil(this.x(object.date)); })
+            .y((object) => { return this.y(object.mood); });
+
         this.x.domain(this.d3.extent(this.moodGraphArray, function (d) { return d.date; }));
 
         this.y.domain([0, this.d3.max(this.moodGraphArray, function (d) { return d.mood; })]);
@@ -63,6 +71,12 @@ export class KfGraphComponent {
             .data([this.moodGraphArray])
             .attr("class", "line")
             .attr("d", valueline);
+
+        this.svg.append("path")
+            .data([this.sentimentGraphArray])
+            .attr("class", "line")
+            .style("stroke", "red")
+            .attr("d", valueline2);
 
         this.svg.append("g")
             .style("font-size", "6.5px")
@@ -89,13 +103,13 @@ export class KfGraphComponent {
             .text("Mood");
 
         const n = 7;
-        
+
         let xScale = this.d3.scaleLinear()
             .domain([0, n - 1]) // input
-            .range([0, this.width]); 
-        
+            .range([0, this.width]);
+
         let yScale = this.d3.scaleLinear()
-            .domain([0, n - 1]) 
+            .domain([0, n - 1])
             .range([this.height, 0]);
 
 
@@ -114,22 +128,22 @@ export class KfGraphComponent {
                 return yScale(d.mood)
             })
             .attr("r", 5)
-            .style("fill", function(d) { return "blue"; })
-            .on("click", function(d) {
-                console.log("hello being clicked");
-
-            })
-
+            .style("fill", function (d) { return "blue"; })
+            .on("click", function(event){
+                let newDate = new Date(event.date);
+                console.log("hello", newDate);
+                thisLink.route.navigate(['/notes', '19-01-2018']);
+            });
     }
 
 
-    mapApiData() {
-        results.results.results.results.map((object) => {
+    mapApiData(arrayToMap: any[], arrayMappedTo: any[]) {
+        arrayToMap.map((object) => {
             let newDate;
             let newMood: number;
             newDate = new Date(object.date);
             newMood = object.data.reduce((x, y) => x += y) / object.data.length;
-            this.moodGraphArray.push({
+            arrayMappedTo.push({
                 "date": newDate,
                 "mood": Math.ceil(newMood)
             })

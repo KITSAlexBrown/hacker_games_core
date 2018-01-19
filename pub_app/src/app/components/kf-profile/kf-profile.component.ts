@@ -11,7 +11,7 @@ export class KfProfile {
     name: string;
     emal: string;
     password: string;
-    @Output() close = new EventEmitter<any>;
+    @Output() close = new EventEmitter<any>();
 
     constructor() {
 
