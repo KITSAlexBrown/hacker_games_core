@@ -1,4 +1,5 @@
-import { Component } from "@angular/core";
+import { Component, Output, EventEmitter } from "@angular/core";
+
 
 @Component({
     selector: 'kf-profile',
@@ -10,12 +11,15 @@ export class KfProfile {
     name: string;
     emal: string;
     password: string;
+    @Output() close = new EventEmitter<any>;
 
     constructor() {
 
     }
 
-    getUser() {
-
+    updateUser() {
+        console.log("update user data");
+        this.close.next();
     }
+
 }

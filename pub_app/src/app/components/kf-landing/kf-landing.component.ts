@@ -18,7 +18,7 @@ export class LandingComponent  {
   ngAfterViewInit() {
     setTimeout(() => {
       this.showAccessForm = true;
-    }, 2000);
+    }, 1000);
   }
 
 // Needs refactoring to remove this check and add in validation for existing users or sign up for new users
