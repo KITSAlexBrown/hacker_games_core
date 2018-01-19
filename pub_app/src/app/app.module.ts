@@ -1,6 +1,6 @@
 import { UsersService } from "./providers/users.service";
 import { LoginService } from "./providers/login.service";
-import { LandingComponent } from "./components/landing/landing.component";
+import { LandingComponent } from "./components/kf-landing/kf-landing.component";
 // Core modules
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule, NO_ERRORS_SCHEMA } from '@angular/core';
@@ -53,7 +53,7 @@ import {
 import { KfIconLink } from './components/kf-icon-link/kf-icon-link.component';
 import { ChatComponent } from './components/chat/chat.component';
 
-import { KfProfile } from "./components/profile/profile.component";
+import { KfProfile } from "./components/kf-profile/kf-profile.component";
 import { KfGraphComponent } from "./components/kf-graph/kf-graph.component";
 @NgModule({
   exports: [
@@ -94,9 +94,7 @@ import { KfGraphComponent } from "./components/kf-graph/kf-graph.component";
 export class DemoMaterialModule {}
 
 const appRoutes: Routes = [
-  { path: '', component:  KfTabComponent},
   { path: 'landing', component: LandingComponent},
-  { path: '', component: KfTabComponent},
   { path: 'chat', component: ChatComponent},
   { path: 'check-in', component: KfCheckInComponent},
   { path: 'profile', component: KfProfile },
