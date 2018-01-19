@@ -107,7 +107,7 @@ const appRoutes: Routes = [
   { path: 'notes', 
       children: [
           { path: '', component: KfNotesViewComponent},
-          { path: ':id', component: KfNotesViewRouteComponent},
+          { path: 'id/:id', component: KfNotesViewRouteComponent},
           { path: 'create', component: KfNoteInputComponent },
           { path: 'edit', component: KfNoteInputComponent }
       ]
