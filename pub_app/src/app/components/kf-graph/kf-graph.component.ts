@@ -1,4 +1,4 @@
-import { Component } from "@angular/core";
+import { Component, HostListener } from "@angular/core";
 import { D3Service, D3, Selection } from "d3-ng2-service";
 import { axisTop } from "d3-ng2-service/src/bundle-d3";
 import * as results from "./stub-data";
@@ -13,16 +13,118 @@ export class KfGraphComponent {
     lineData: any[];
     private d3: D3;
     moodGraphArray: any[];
+    width: number;
+    height: number;
+    margin: any;
+    x: any;
+    y: any;
+    svg: any;
+
+    @HostListener('window:resize') onResize() {
+        this.plotGraph();
+    }
 
     constructor(d3Service: D3Service) {
         this.moodGraphArray = [];
         this.d3 = d3Service.getD3();
     }
     ngOnInit() {
+        this.mapApiData();
+        this.orientInitialScales();
         this.plotGraph();
     }
-    async plotGraph() {
-        await results.results.results.results.map((object) => {
+
+    reCalculateSize(windowWidth) {
+        this.margin = { top: 200, right: 20, bottom: 400, left: 50 },
+            this.width = windowWidth - this.margin.left - this.margin.right,
+            this.height = 500 - this.margin.top
+    }
+
+    orientInitialScales() {
+        this.reCalculateSize(window.innerWidth);
+        this.x = this.d3.scaleTime().range([0, this.width]);
+        this.y = this.d3.scaleLinear().range([this.height, 0]);
+        this.svg = this.d3.select("#visualisation")
+            .attr("width", this.width + this.margin.left + this.margin.right)
+            .attr("height", this.height + this.margin.top + this.margin.bottom)
+            .append("g")
+            .attr("class", "line")
+            .attr("transform",
+            "translate(" + this.margin.left + "," + this.margin.top + ")");
+        let valueline = this.d3.line<MoodPoint>()
+            .x((object) => { return Math.ceil(this.x(object.date)); })
+            .y((object) => { return this.y(object.mood); });
+
+        this.x.domain(this.d3.extent(this.moodGraphArray, function (d) { return d.date; }));
+
+        this.y.domain([0, this.d3.max(this.moodGraphArray, function (d) { return d.mood; })]);
+        console.log(this.moodGraphArray);
+        this.svg.append("path")
+            .data([this.moodGraphArray])
+            .attr("class", "line")
+            .attr("d", valueline);
+
+        this.svg.append("g")
+            .style("font-size", "6.5px")
+            .attr("transform", "translate(0," + this.height + ")")
+            .call(this.d3.axisBottom(this.x));
+
+        this.svg.append("text")
+            .attr("transform",
+            "translate(" + (this.width / 2) + " ," +
+            (this.height + this.margin.top - 160) + ")")
+            .style("text-anchor", "middle")
+            .text("Date");
+
+        this.svg.append("g")
+            .call(this.d3.axisLeft(this.y));
+
+        // text label for the y axis
+        this.svg.append("text")
+            .attr("transform", "rotate(-90)")
+            .attr("y", 0 - this.margin.left)
+            .attr("x", 0 - (this.height / 2))
+            .attr("dy", "1em")
+            .style("text-anchor", "middle")
+            .text("Mood");
+
+        const n = 7;
+        
+        let xScale = this.d3.scaleLinear()
+            .domain([0, n - 1]) // input
+            .range([0, this.width]); 
+        
+        let yScale = this.d3.scaleLinear()
+            .domain([0, n - 1]) 
+            .range([this.height, 0]);
+
+
+
+        let thisLink = this;
+        this.svg.selectAll(".dot")
+            .data(this.moodGraphArray)
+            .enter().append("circle") // Uses the enter().append() method
+            .attr("class", "dot") // Assign a class for styling
+            .attr("cx", function (d, i) {
+                console.log(thisLink.height, 'height');
+                return xScale(i)
+            })
+            .attr("cy", function (d) {
+                console.log(thisLink.width, 'width');
+                return yScale(d.mood)
+            })
+            .attr("r", 5)
+            .style("fill", function(d) { return "blue"; })
+            .on("click", function(d) {
+                console.log("hello being clicked");
+
+            })
+
+    }
+
+
+    mapApiData() {
+        results.results.results.results.map((object) => {
             let newDate;
             let newMood: number;
             newDate = new Date(object.date);
@@ -32,65 +134,12 @@ export class KfGraphComponent {
                 "mood": Math.ceil(newMood)
             })
         })
+    }
 
-        let margin = { top: 20, right: 20, bottom: 30, left: 50 },
-            width = 960 - margin.left - margin.right,
-            height = 500 - margin.top - margin.bottom;
-
-        let parseTime = this.d3.timeParse("%d-%m-%Y");
-
-        let x = this.d3.scaleTime().range([0, width]);
-        let y = this.d3.scaleLinear().range([height, 0]);
-
-        let valueline = this.d3.line<MoodPoint>()
-            .x((d) => { 
-                console.log(x(d.date))
-                return Math.ceil(x(d.date)); })
-            .y((d) => { 
-                // console.log('the mood', d.mood);
-                // console.log('the scaled point', y(d.mood));
-                console.log(d.mood);
-                return y(d.mood); });
-
-        let svg = this.d3.select("body").append("svg")
-            .attr("width", width + margin.left + margin.right)
-            .attr("height", height + margin.top + margin.bottom)
-            .append("g")
-            .attr("class", "line")
-            .attr("transform",
-            "translate(" + margin.left + "," + margin.top + ")");
-
-        x.domain(this.d3.extent(this.moodGraphArray, function (d) { return d.date; }));
-
-        y.domain([0, this.d3.max(this.moodGraphArray, function (d) { return d.mood; })]);
-
-        svg.append("path")
-            .data([this.moodGraphArray])
-            .attr("class", "line")
-            .attr("d", valueline);
-
-        svg.append("g")
-            .attr("transform", "translate(0," + height + ")")
-            .call(this.d3.axisBottom(x));
-
-        svg.append("text")
-            .attr("transform",
-            "translate(" + (width / 2) + " ," +
-            (height + margin.top + 20) + ")")
-            .style("text-anchor", "middle")
-            .text("Date");
-
-        svg.append("g")
-            .call(this.d3.axisLeft(y));
-
-        // text label for the y axis
-        svg.append("text")
-            .attr("transform", "rotate(-90)")
-            .attr("y", 0 - margin.left)
-            .attr("x", 0 - (height / 2))
-            .attr("dy", "1em")
-            .style("text-anchor", "middle")
-            .text("Value");
+    plotGraph() {
+        this.reCalculateSize(window.innerWidth);
+        this.x.range([0, this.width]);
+        this.y.range([this.height, 0]);
     }
 }
 
