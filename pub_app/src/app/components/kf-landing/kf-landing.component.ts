@@ -4,8 +4,8 @@ import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-landing',
-  templateUrl: './landing.component.html',
-  styleUrls: ['./landing.component.scss']
+  templateUrl: './kf-landing.component.html',
+  styleUrls: ['./kf-landing.component.scss']
 })
 export class LandingComponent  {
   public email: string = "superman@hero.co";
