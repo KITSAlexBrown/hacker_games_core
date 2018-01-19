@@ -12,6 +12,10 @@
         .kf-link {
             float: right;
             margin-right: 16px;
+            height: 100%;
+            /deep/ button {
+                line-height: 50px;
+            }
         }
     }
 }
