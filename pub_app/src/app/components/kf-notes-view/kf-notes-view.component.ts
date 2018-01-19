@@ -27,5 +27,15 @@ export class KfNotesViewComponent implements OnInit {
   editNote(noteId) {
       this.router.navigate(['/notes/create'], {queryParams: {'noteId': noteId}});
   }
+  
+  createDateString(timestamp) {
+    let date = new Date(timestamp);
+    let dateString = "";
+    let monthNames = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
+    dateString = date.getDate() + " ";
+    dateString += monthNames[date.getMonth()] + " ";
+    dateString += date.getFullYear() + " ";
+    return dateString;
+}
 
 }
