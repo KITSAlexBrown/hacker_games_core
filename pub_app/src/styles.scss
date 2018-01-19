@@ -8,7 +8,7 @@ body {
 
 // Icon backgorund image mixin
 
-@each $name in 'chat' 'mood' 'notes' 'profile' 'settings' 'tracker'{
+@each $name in 'chat' 'edit' 'mood' 'notes' 'profile' 'settings' 'tracker'{
     .icon-#{$name} {
         background-image: url('/assets/images/ic_#{$name}.png');
     }
@@ -20,4 +20,47 @@ body {
     .icon-#{$name} {
         background-image: url('/assets/images/#{$name}.png');
     }
+}
+
+// Font family mixin
+
+@include font-face(Noto-Sans, fonts/NotoSans-Regular);
+@include font-face(Noto-Sans-Italic, fonts/NotoSans-Italic);
+@include font-face(Noto-Sans-Bold, fonts/NotoSans-Bold);
+@include font-face(Noto-Sans-Bold-Italic, fonts/NotoSans-BoldItalic);
+
+@font-face {
+	font-family: "Noto-Sans";
+	src: url("fonts/NotoSans-Regular.eot?") format("eot"),
+		 url("fonts/NotoSans-Regular.woff2") format("woff2"),
+		 url("fonts/NotoSans-Regular.woff") format("woff"),
+		 url("fonts/NotoSans-Regular.ttf") format("truetype"),
+		 url("fonts/NotoSans-Regular.svg#Noto") format("svg");
+}
+
+@font-face {
+	font-family: "Noto-Sans-Italic";
+	src: url("fonts/NotoSans-Italic.eot?") format("eot"),
+		 url("fonts/NotoSans-Italic.woff2") format("woff2"),
+		 url("fonts/NotoSans-Italic.woff") format("woff"),
+		 url("fonts/NotoSans-Italic.ttf") format("truetype"),
+		 url("fonts/NotoSans-Italic.svg#Noto-Italic") format("svg");
+}
+
+@font-face {
+	font-family: "Noto-Sans-Bold";
+	src: url("fonts/NotoSans-Bold.eot?") format("eot"),
+		 url("fonts/NotoSans-Bold.woff2") format("woff2"),
+		 url("fonts/NotoSans-Bold.woff") format("woff"),
+		 url("fonts/NotoSans-Bold.ttf") format("truetype"),
+		 url("fonts/NotoSans-Bold.svg#Noto-Bold") format("svg");
+}
+
+@font-face {
+	font-family: "Noto-Sans-Bold-Italic";
+	src: url("fonts/NotoSans-BoldItalic.eot?") format("eot"),
+		 url("fonts/NotoSans-BoldItalic.woff2") format("woff2"),
+		 url("fonts/NotoSans-BoldItalic.woff") format("woff"),
+		 url("fonts/NotoSans-BoldItalic.ttf") format("truetype"),
+		 url("fonts/NotoSans-BoldItalic.svg#Noto-Bold-Italic") format("svg");
 }
