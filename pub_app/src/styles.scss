@@ -1,11 +1,4 @@
-body {
-    height: 100vh;
-    padding: 0;
-    margin: 0;
-}
-.button {
-    background-color: grey;
-}
+
 
 // // Icon backgorund image mixin
 
@@ -69,3 +62,14 @@ body {
 @include font-face('Noto-Sans-Italic', '/app/assets/fonts/NotoSans-Italic/NotoSans-Italic', null,  italic);
 @include font-face('Noto-Sans-Bold', '/app/assets/fonts/NotoSans-Bold/NotoSans-Bold', bold, null);
 @include font-face('Noto-Sans-Bold-Italic', '/app/assets/fonts/NotoSans-BoldItalic/NotoSans-BoldItalic', bold, italic);
+
+body {
+	font-family: 'Noto-Sans';
+	height: 100vh;
+	margin: 0;
+    padding: 0;
+}
+.button {
+    background-color: grey;
+}
+
