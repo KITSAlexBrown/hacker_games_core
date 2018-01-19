@@ -10,6 +10,7 @@ import { Router } from '@angular/router';
 export class LandingComponent  {
   public email: string = "";
   public  showAccessForm: boolean = false;
+  public errorMessage: string = "";
 
   constructor(private router: Router, private loginService: LoginService) {
   }
