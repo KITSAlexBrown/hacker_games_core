@@ -51,6 +51,7 @@ import {
 
 import { KfProfile } from "./components/profile/profile.component";
 import { KfGraphComponent } from "./components/kf-graph/kf-graph.component";
+import { KfTrackerComponent } from "./components/tracker/tracker.component";
 @NgModule({
   exports: [
     MatAutocompleteModule,
@@ -94,6 +95,7 @@ const appRoutes: Routes = [
   { path: 'landing', component: LandingComponent},
   { path: 'check-in', component: KfCheckInComponent},
   { path: 'profile', component: KfProfile },
+  { path: 'tracker', component: KfTrackerComponent},
   { path: 'notes', 
       children: [
           { path: '', component: KfNotesViewComponent},
@@ -114,7 +116,8 @@ const appRoutes: Routes = [
     KfTabComponent,
     KfIconLink,
     KfProfile,
-    KfGraphComponent
+    KfGraphComponent,
+    KfTrackerComponent
   ],
   imports: [
     FormsModule,
