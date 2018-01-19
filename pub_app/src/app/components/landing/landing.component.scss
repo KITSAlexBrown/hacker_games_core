@@ -1,25 +1,37 @@
-
-
-
 :host {
-    .landing-container {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        height: 100vh;
-    }
-
-    .landing-center {
-        max-width: 300px;
-    }
 
     h1 {
         text-align: center;
         margin-bottom: 40px;
     }
 
-    .button {
-        background-color: grey;
+    .landing-access {
+        margin-top: 20px;
+        height: 0;
+        overflow: hidden;
+        transition: all 1s ease-out;
+        input, button {
+            width: 100%;
+        }
+    }
+
+    .landing-center {
+        max-width: 300px;
+    }
+
+    .landing-logo {
+        max-width: 280px;
+        img {
+            width: 100%;
+        }
+    }
+
+    .show-access {
+         height: 150px;
+    }
+
+    .user-input {
+        margin-bottom: 20px;
     }
 
 }
