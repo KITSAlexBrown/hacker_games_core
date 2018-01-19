@@ -5,4 +5,17 @@
     .header-margin {
         height: 48px;
     }
+    .main-container {
+        height: 100%;
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+}
+
+path.line
+{
+    fill: none;
+    stroke: transparent;
 }

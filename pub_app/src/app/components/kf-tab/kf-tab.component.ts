@@ -9,10 +9,7 @@ import { Component } from "@angular/core";
 export class KfTabComponent {
     navLinks: Link[];
     constructor() {
-        this.navLinks = [ {
-            path: 'profile',
-            label: 'profile'
-        },
+        this.navLinks = [
         {
             path: 'tracker',
             label: 'tracker'
@@ -24,6 +21,10 @@ export class KfTabComponent {
         {
             path: 'notes',
             label: 'notes'
+        },
+        {
+            path: 'chat',
+            label: 'chat'
         }
     ]
     }
