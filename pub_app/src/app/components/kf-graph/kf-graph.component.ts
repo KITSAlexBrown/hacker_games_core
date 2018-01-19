@@ -132,7 +132,7 @@ export class KfGraphComponent {
             .on("click", function(event){
                 let newDate = new Date(event.date);
                 console.log("hello", newDate);
-                thisLink.route.navigate(['/notes', '19-01-2018']);
+                thisLink.route.navigate(['/notes/id', '19-01-2018']);
             });
     }
 
