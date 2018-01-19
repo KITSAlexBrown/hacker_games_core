@@ -1,9 +1,10 @@
 
-<nav mat-tab-nav-bar class="footer">
-  <a mat-tab-link
+<nav  class="footer">
+  <a
      *ngFor="let link of navLinks"
      [routerLink]="link.path"
      >
-    {{link.label}}
+    <img [src]="'/assets/images/icons/' + link.icon">
+    <div>{{link.label}}</div>
   </a>
 </nav>

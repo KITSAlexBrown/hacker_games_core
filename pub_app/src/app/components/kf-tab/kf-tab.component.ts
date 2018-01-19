@@ -12,19 +12,23 @@ export class KfTabComponent {
         this.navLinks = [
             {
                 path: 'tracker',
-                label: 'tracker'
+                label: 'tracker',
+                icon: 'ic_tracker.png'
             },
             {
                 path: 'check-in',
-                label: 'mood'
+                label: 'mood',
+                icon: 'ic_mood.png'
             },
             {
                 path: 'notes',
-                label: 'notes'
+                label: 'notes',
+                icon: 'ic_notes.png'
             },
             {
                 path: 'chat',
-                label: 'Chat'
+                label: 'Chat',
+                icon: 'ic_chat.png'
             }
     ]
     }
@@ -33,4 +37,5 @@ export class KfTabComponent {
 export interface Link {
         path: string;
         label: string;
+        icon: string
 }
