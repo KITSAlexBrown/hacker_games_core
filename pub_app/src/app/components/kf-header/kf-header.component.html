@@ -1,5 +1,6 @@
 <nav class="header">
     <button><img src="/assets/images/icons/ic_menu.png"></button>
-    <button routerLink="/profile"><img src="/assets/images/icons/ic_settings.png"></button>
+    <button (click)="showProfile = !showProfile"><img src="/assets/images/icons/ic_settings.png"></button>
 </nav>
+<kf-profile *ngIf="showProfile" (close)="closeProfile()"></kf-profile>
 
