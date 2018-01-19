@@ -95,14 +95,9 @@ import { KfHeaderComponent } from "./components/kf-header/kf-header.component";
 export class DemoMaterialModule {}
 
 const appRoutes: Routes = [
-<<<<<<< HEAD
-  { path: 'landing', component: LandingComponent},
-  { path: 'chat', component: ChatComponent},
-=======
   { path: '', component:  KfCheckInComponent},
   { path: 'landing', component: LandingComponent},
   { path: 'chat', component: KfChatComponent},
->>>>>>> a1fd5b61a1de0baccea25bf9698aedb3523952e7
   { path: 'check-in', component: KfCheckInComponent},
   { path: 'profile', component: KfProfile },
   { path: 'notes',
