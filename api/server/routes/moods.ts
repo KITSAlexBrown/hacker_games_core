@@ -1,7 +1,7 @@
 import { Router, Request, Response } from "express";
 import { Note, Mood, IMood, INote, Sentiment } from "../models";
 import * as speak from "speakeasy-nlp"
-import { addMeta } from "./index";
+import { addMeta, addError } from "./index";
 
 /**
  * User router 
@@ -144,7 +144,7 @@ export class MoodsRouter {
          *     tags:
          *      - User
          *     description:
-         *      Get a mood against its id and a user
+         *      Get a mood against avergaed
          *     produces:
          *       - application/json
          *     responses:
@@ -156,42 +156,89 @@ export class MoodsRouter {
          *         description: Forbidden
          */
         this.router.get("/moods/user/:id/emotion", async(request: Request, response: Response) => {  
-            let stub = {
-                "results": [
-                    { "date": "1-MAY-2012", "data" : [ 1, 5 , 6] },
-                    { "date": "2-MAY-2012", "data" : [ 4, 5 , 6] },
-                    { "date": "3-MAY-2012", "data" : [ 1, 5 , 6] },
-                    { "date": "4-MAY-2012", "data" : [ 1, 3 , 6] },
-                    { "date": "5-MAY-2012", "data" : [ 1, 5 , 6] },
-                    { "date": "6-MAY-2012", "data" : [ 1, 5 , 7] },
-                    { "date": "7-MAY-2012", "data" : [ 1, 4 , 2] },
-                    { "date": "8-MAY-2012", "data" : [ 1, 6 , 6] },
-                    { "date": "1-MAY-2012", "data" : [ 1, 5 , 6] },
-                    { "date": "9-MAY-2012", "data" : [ 1, 5 , 6] },
-                    { "date": "10-MAY-2012", "data" : [ 3, 5 , 6] },
-                    { "date": "11-MAY-2012", "data" : [ 1, 5 , 1] },
-                    { "date": "12-MAY-2012", "data" : [ 5, 5 , 6] },
-                    { "date": "13-MAY-2012", "data" : [ 1, 4 , 6] },
-                    { "date": "14-MAY-2012", "data" : [ 1, 5 , 6] },
-                    { "date": "15-MAY-2012", "data" : [ 2, 2 , 2] },
-                    { "date": "16-MAY-2012", "data" : [ 1, 5 , 6] },
-                    { "date": "17-MAY-2012", "data" : [ 1, 5 , 6] },
-                    { "date": "18-MAY-2012", "data" : [ 3, 3 , 6] },
-                    { "date": "19-MAY-2012", "data" : [ 1, 5 , 3] },
-                    { "date": "20-MAY-2012", "data" : [ 1, 4 , 6] },
-                    { "date": "21-MAY-2012", "data" : [ 4, 3 , 2] },
-                    { "date": "22-MAY-2012", "data" : [ 1, 5 , 3] },
-                    { "date": "23-MAY-2012", "data" : [ 7, 5 , 6] },
-                    { "date": "24-MAY-2012", "data" : [ 1, 5 , 6] },
-                    { "date": "25-MAY-2012", "data" : [ 1, 5 , 6] },
-                    { "date": "26-MAY-2012", "data" : [ 1, 5 , 6] },
-                    { "date": "27-MAY-2012", "data" : [ 1, 5 , 6] },
-                    { "date": "28-MAY-2012", "data" : [ 1, 5 , 6] },
-                    { "date": "29-MAY-2012", "data" : [ 1, 5 , 6] },
+            //
+            let id = request.params.id
+            //
+            var dateQuery = new Date();
+            dateQuery.setDate(dateQuery.getDate()-30);
+            //
+            const moodAgg = await Mood.aggregate(
+            // { $match: {'user': id  } },
+            { $group: {'_id': {
+                                'year': { '$year': "$create" },
+                                'month': { '$month': "$create" },
+                                'day': { '$dayOfMonth': "$create" }
+                            },
+                            first: { $min: "$create" },
+                            mood: { $avg: "$mood" },
+                        }
+            }).project(
+                { 
+                    mood: "$mood", 
+                    create: 
+                        { $dateToString: { format: "%d-%m-%Y", date: "$first" }  } 
+                }
+            ).exec();
+            //
+            const mood = await Mood.find({
+                create: {
+                    $gte: dateQuery,
+                }
+            }).exec();
+            //
+            response.json(addMeta(moodAgg, request))
+        });
 
-                ]
-            }
-            response.json(addMeta(stub, request))
+         /**
+         * @swagger
+         * /api/moods/user/:id/sentiment:
+         *   get:
+         *     tags:
+         *      - User
+         *     description:
+         *      Get a sentiment score from a user for a day
+         *     produces:
+         *       - application/json
+         *     responses:
+         *       200:
+         *         description: Users Authenticte
+         *       400:
+         *         description: Invalid request
+         *       403:
+         *         description: Forbidden
+         */
+        this.router.get("/moods/user/:id/sentiment", async(request: Request, response: Response) => {  
+            //
+            let id = request.params.id
+            //
+            var dateQuery = new Date();
+            dateQuery.setDate(dateQuery.getDate()-30);
+            //
+            const moodAgg = await Mood.aggregate(
+            // { $match: {'user': id  } },
+            { $group: {'_id': {
+                                'year': { '$year': "$create" },
+                                'month': { '$month': "$create" },
+                                'day': { '$dayOfMonth': "$create" }
+                            },
+                            first: { $min: "$create" },
+                            mood: { $avg: "$sentiment_score" },
+                        }
+            }).project(
+                { 
+                    mood: "$mood", 
+                    create: 
+                        { $dateToString: { format: "%d-%m-%Y", date: "$first" }  } 
+                }
+            ).exec();
+            //
+            const mood = await Mood.find({
+                create: {
+                    $gte: dateQuery,
+                }
+            }).exec();
+            //
+            response.json(addMeta(moodAgg, request))
         });
 
         /**
@@ -217,10 +264,16 @@ export class MoodsRouter {
             let id = request.params.id
             // Mood
             let mood: IMood = request.body
-            // let language = speak.sentiment.analyze(request.body.note_txt)  
             //
-            /**
-            if(language){
+            if(request.body.note === null){ 
+                response.status(422).json(addError("Malformed entity request", request))
+                return
+            }
+            // Set the text we require
+            request.body.note_txt = request.body.note
+            //
+            if(request.body.note !== null){
+                let language = speak.sentiment.analyze(request.body.note)  
                 let score: number = language['score']
                 let positive: string[] = language['positive']['words']
                 let negative: string[] = language['negative']['words']
@@ -228,12 +281,12 @@ export class MoodsRouter {
                 mood.sentiment_positive = positive
                 mood.sentiment_negative = negative
             }
-            **/
             ///
             const moodUpdate = await Mood.update({"_id": id}, mood )
             //
             response.status(200).json(addMeta(moodUpdate, request));
         });
+
         //
         return this.router;
     }

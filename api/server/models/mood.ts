@@ -6,6 +6,7 @@ import { Note } from "./index";
 export interface IMood extends Document {
   mood: number;
   create?: Date;
+  create_pretty?: String;
   user: {};
   note: any;
   note_txt: string;
@@ -32,7 +33,7 @@ const schema = new Schema({
   note_txt: String,
   create: {
       type: Date,
-      "default": Date.now
+      default: Date.now
   },
   user: {
     type: Schema.Types.ObjectId,
@@ -42,6 +43,14 @@ const schema = new Schema({
   sentiment_score: Number,
   sentiment_positive: [String],
   sentiment_negative: [String]
+});
+
+//
+
+schema.virtual('create_pretty')
+.get(function() {
+  return "weofghewfiouhewf"
+  // return this._id.generationTime.toDateString();
 });
 
 // Export for consumption
