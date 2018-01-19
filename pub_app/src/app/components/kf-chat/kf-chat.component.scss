@@ -1,11 +1,17 @@
 :host {
     display: block;
     position: relative;
-    margin: 0 20px;
+    height: 100%;
     width: 100%;
     font-family: Roboto,"Helvetica Neue",sans-serif;
     font-size: 14px;
-
+    .container {
+        padding: 0 20px;
+    }
+    .error {
+        color: red;
+        padding: 20px;
+    }
     .messages-container {
         overflow: hidden;
         height: 70vh;
@@ -57,8 +63,9 @@
 
     .message-input {
         position: absolute;
-        bottom: 0;
+        bottom: 10px;
         margin-top: 20px;
+        width: 90%;
         textarea {
             font-family: Roboto,"Helvetica Neue",sans-serif;
             font-size: 14px;

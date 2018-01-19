@@ -6,11 +6,11 @@ import { LoginService } from "../../providers/login.service";
 import { Observable } from "rxjs/Observable";
 
 @Component({
-  selector: 'app-chat',
-  templateUrl: './chat.component.html',
-  styleUrls: ['./chat.component.scss']
+  selector: 'kf-chat',
+  templateUrl: './kf-chat.component.html',
+  styleUrls: ['./kf-chat.component.scss']
 })
-export class ChatComponent implements OnInit {
+export class KfChatComponent implements OnInit {
   public messages: any[] = [];
   public room: any;
   public userMessage: string = "";
@@ -19,6 +19,7 @@ export class ChatComponent implements OnInit {
   public otherUsers = [];
   user: User;
   @ViewChild('scrollMe') private myScrollContainer: ElementRef;
+  public errorChatkit: string = "";
 
   constructor(private usersService: UsersService, private userService: LoginService) {
 
@@ -45,7 +46,8 @@ export class ChatComponent implements OnInit {
         });
       },
       onError: (error) => {
-        console.log("Error on connection");
+        console.log("ERRROR on CONNECTION", error);
+        this.errorChatkit = "Unable to connect to the chat";
       }
     });
 
@@ -64,8 +66,12 @@ export class ChatComponent implements OnInit {
             this.messages.push(msg);
             this.scrollToBottom();
 
+        },
+        error: (error) => {
+          this.errorChatkit = "Unable to fetch the messages";
         }
       }
+
     );
   }
 

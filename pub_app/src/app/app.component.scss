@@ -1,3 +1,4 @@
+
 :host {
     .kf-link {
         float: right;
@@ -11,6 +12,10 @@
         display: flex;
         justify-content: center;
         // align-items: center;
+    }
+    .page-container {
+        margin: 50px 0;
+        height: calc( 100% - 100px );
     }
 }
 
