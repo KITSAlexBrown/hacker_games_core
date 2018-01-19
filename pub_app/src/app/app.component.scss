@@ -1,12 +1,24 @@
+
 :host {
+
+    .header-margin {
+        height: 48px;
+    }
+
     .kf-link {
         float: right;
     }
+
     .main-container {
         height: 100%;
         width: 100%;
         display: flex;
         justify-content: center;
-        align-items: center;
+    }
+    .page-container {
+        position: relative;
+        top: 70px;
+        margin-bottom: 70px;
+        height: calc( 100% - 140px );
     }
 }

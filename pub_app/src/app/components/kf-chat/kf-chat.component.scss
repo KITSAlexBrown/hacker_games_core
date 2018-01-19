@@ -1,0 +1,79 @@
+:host {
+    display: block;
+    font-family: Roboto,"Helvetica Neue",sans-serif;
+    font-size: 14px;
+    height: 100%;
+    position: relative;
+    width: 100%;
+    .container {
+        padding: 0 20px;
+    }
+    .error {
+        color: red;
+        padding: 20px;
+    }
+
+    .message {
+        background-color: #eeeeee;
+        border-radius: 12px;
+        margin: 30px 0;
+        position: relative;
+        padding: 20px;
+        img {
+            height: 40px;
+        }
+        &:after {
+            content: '';
+            border: 20px solid transparent;
+            border-top-color: #eeeeee;
+            border-bottom: 0;
+            border-right: 0;
+            bottom: 0;
+            height: 0;
+            left: 30px;
+            margin-left: -10px;
+            margin-bottom: -20px;
+            position: absolute;
+            width: 0;
+        }
+        &.isMe {
+            background-color: #2c59ec;
+            color: white;
+            &:after {
+                border: 20px solid transparent;
+                border-top-color: #2c59ec;
+                border-bottom: 0;
+                border-left: 0;
+                bottom: 0;
+                content: '';
+                height: 0;
+                left: auto;
+                margin-left: -10px;
+                margin-bottom: -20px;
+                position: absolute;
+                right: 30px;
+                width: 0;
+            }
+        }
+    }
+    .messages-container {
+        height: 60vh;
+        overflow: hidden;
+        overflow-y: auto;
+    }
+    .message-input {
+        bottom: 20px;
+        margin-top: 20px;
+        position: absolute;
+        width: 90%;
+        textarea {
+            border: 2px solid #eeeeee;
+            font-family: Roboto,"Helvetica Neue",sans-serif;
+            font-size: 14px;
+            height: 60px;
+            padding: 8px;
+            width: 90%;
+        }
+    }
+
+}

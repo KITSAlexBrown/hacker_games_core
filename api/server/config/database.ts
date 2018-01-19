@@ -3,26 +3,12 @@ import * as mongoose from "mongoose";
 
 (mongoose as any).Promise = global.Promise;
 
+const mockgoose = new Mockgoose(mongoose);
+mockgoose.helper.setDbVersion("3.4.3");
+
 //
-/**
-if (process.env.NODE_ENV === "testing") {
-
-  const mockgoose = new Mockgoose(mongoose);
-  mockgoose.helper.setDbVersion("3.4.3");
-
-  mockgoose.prepareStorage().then((): void => {
-    mongoose.connect("mongodb://127.0.0.1/db", {
-      useMongoClient: true,
-    });
-  });
-
-} else {
-**/
-
-mongoose.connect("mongodb://127.0.0.1/db", {
+mongoose.connect("mongodb://192.168.99.100/db", {
   useMongoClient: true,
 });
-
-// }
 
 export { mongoose };

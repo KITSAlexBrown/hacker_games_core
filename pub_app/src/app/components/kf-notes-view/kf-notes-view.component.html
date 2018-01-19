@@ -1,3 +1,11 @@
+<div class="notes">
+    <h1>Notes</h1>
+</div>
 <div *ngFor="let note of notes">
-    <p>{{ note.rating }}  {{ note.text }}</p>
+    <div class="note-container">
+        <h1 class="rating">{{ note.mood }}</h1>
+        <p class="date">{{ createDateString(note.create) }}</p>  
+        <p class="note-txt">{{ note.note_txt }}</p>  
+        <button (click)="editNote(note._id)" class="edit-button"><img class="edit-icon" src="../../../assets/images/icons/ic_edit.png" alt="edit note"></button>
+    </div>
 </div>

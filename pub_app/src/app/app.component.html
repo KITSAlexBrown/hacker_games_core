@@ -1,5 +1,6 @@
-<kf-icon-link class="kf-link" [route]="'profile'" *ngIf="loginService.userLogged"></kf-icon-link>
-<div class="main-container">
+<kf-header  class="header-margin"></kf-header>
+<div class="page-container">
     <router-outlet></router-outlet>
+
 </div>
-<kf-tab *ngIf="loginService.userLogged"></kf-tab>
+<kf-tab ></kf-tab>

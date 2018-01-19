@@ -1,8 +1,12 @@
-<div class="">
-    <h1>Please share more detail</h1>
+<div class="note-input-heading">
+    <h1>Add your thoughts and context</h1>
 </div>
-<textarea class="text-input" [(ngModel)]="note" rows="25"></textarea>
-<div class="">
-    <button mat-raised-button class="button" (click)="sumbitNote()" [routerLink]="'/notes'" type="submit">Submit</button>
+<div class="input-section">
+    <textarea class="text-input" [(ngModel)]="noteText" rows="15"></textarea>
+</div>
+<div class="submit-section">
+    <div>
+        <button mat-raised-button class="button" type="submit" (click)="actionNote()">Submit</button>
+    </div>
 </div>
 

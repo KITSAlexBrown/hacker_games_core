@@ -1,0 +1,57 @@
+:host {
+    display: block;
+    height: 100vh;
+    position: relative;
+
+    h1 {
+        text-align: center;
+        margin-bottom: 40px;
+    }
+    .error {
+        color: red;
+        padding: 0 10px;
+    }
+
+    .landing-access {
+        height: 0;
+        margin-top: 20px;
+        overflow: hidden;
+        transition: all 1s ease-out;
+    }
+
+    .landing-center {
+        max-width: 300px;
+    }
+
+    .landing-container  {
+        align-items: center;
+        background: white;
+        bottom: 0;
+        display: flex;
+        left: 0;
+        justify-content: center;
+        padding: 0 40px;
+        max-width: 320px;
+        position: fixed;
+        right: 0;
+        top: 0;
+        width: 100%;
+        z-index: 1000;
+    }
+
+    .landing-logo {
+        max-width: 280px;
+        img {
+            width: 100%;
+        }
+    }
+
+    .show-access {
+         height: 150px;
+    }
+
+    .user-input {
+        margin-bottom: 20px;
+    }
+
+}

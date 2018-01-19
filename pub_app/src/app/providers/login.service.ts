@@ -1,3 +1,4 @@
+import { UsersService } from "./users.service";
 import { User } from "./user.model";
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
@@ -7,15 +8,25 @@ export class LoginService {
   private _userLogged: boolean = false;
   public user: User;
 
-  constructor() { }
+  constructor(private usersService: UsersService) { }
 
   public get userLogged(): boolean {
     return this._userLogged;
   }
 
-  public userAccess(username: string, password: string, email: string): Observable<boolean> {
-    this.user = new User(username, email);
-    this._userLogged = true;
-    return Observable.of(true);
+  public userAccess(email: string): Observable<any> {
+
+     return this.usersService.getUsers().map(users => {
+      let found = users.filter(user => user.email === email);
+      if (found.length > 0) {
+        this._userLogged = true;
+        this.user = found[0];
+        return Observable.of(true);
+      } else {
+        return Observable.of(false);
+      }
+    });
+
   }
+
 }
