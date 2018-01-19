@@ -5,14 +5,18 @@ import { LandingComponent } from "./components/landing/landing.component";
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule, NO_ERRORS_SCHEMA } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+
+import { FormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
 // Style modules
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 // Components
 import { AppComponent } from './app.component';
 import { KfCheckInComponent } from './components/kf-check-in/kf-check-in.component';
-import { FormsModule } from '@angular/forms';
-
+import { KfNoteInputComponent } from './components/kf-note-input/kf-note-input.component';
 import { KfTabComponent } from './components/kf-tab/kf-tab.component';
+import { KfNotesViewComponent } from './components/kf-notes-view/kf-notes-view.component';
+import { D3Service } from 'd3-ng2-service';
 import {
   MatAutocompleteModule,
   MatButtonModule,
@@ -48,6 +52,9 @@ import {
 } from '@angular/material';
 import { KfIconLink } from './components/kf-icon-link/kf-icon-link.component';
 import { ChatComponent } from './components/chat/chat.component';
+
+import { KfProfile } from "./components/profile/profile.component";
+import { KfGraphComponent } from "./components/kf-graph/kf-graph.component";
 @NgModule({
   exports: [
     MatAutocompleteModule,
@@ -81,15 +88,25 @@ import { ChatComponent } from './components/chat/chat.component';
     MatTabsModule,
     MatToolbarModule,
     MatTooltipModule,
-  ]
+  ],
+  declarations: []
 })
 export class DemoMaterialModule {}
 
 const appRoutes: Routes = [
+  { path: '', component:  KfTabComponent},
   { path: 'landing', component: LandingComponent},
   { path: '', component: KfTabComponent},
   { path: 'chat', component: ChatComponent},
-  { path: 'check-in', component: KfCheckInComponent}
+  { path: 'check-in', component: KfCheckInComponent},
+  { path: 'profile', component: KfProfile },
+  { path: 'notes',
+      children: [
+          { path: '', component: KfNotesViewComponent},
+          { path: 'create', component: KfNoteInputComponent },
+          { path: 'edit', component: KfNoteInputComponent }
+      ]
+  }
 ]
 //
 //
@@ -98,21 +115,26 @@ const appRoutes: Routes = [
     AppComponent,
     LandingComponent,
     KfCheckInComponent,
+    KfNoteInputComponent,
+    KfNotesViewComponent,
     KfTabComponent,
     KfIconLink,
-    ChatComponent
+    ChatComponent,
+    KfProfile,
+    KfGraphComponent
   ],
   imports: [
+    FormsModule,
     RouterModule.forRoot(
       appRoutes
     ),
     BrowserModule,
     DemoMaterialModule,
     BrowserAnimationsModule,
-      FormsModule
+    HttpClientModule
   ],
   schemas: [ NO_ERRORS_SCHEMA ],
-  providers: [LoginService, UsersService],
+  providers: [LoginService, UsersService, D3Service],
   bootstrap: [AppComponent]
 })
 export class AppModule {

@@ -17,7 +17,6 @@ export class KfCheckInComponent implements OnInit {
 
     setMoodRating(rating: number) {
         this.moodRating = rating;
-        console.log(this.moodRating);
     }
 
 
