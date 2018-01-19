@@ -24,7 +24,7 @@ export class LandingComponent  {
     this.loginService.userAccess(this.email).subscribe(res => {
       console.log("login result", res["value"]);
       if (res["value"] === true) {
-        this.router.navigateByUrl('');
+        this.router.navigateByUrl('/check-in');
       }
     })
   }

@@ -1,35 +1,6 @@
-body {
-    height: 100vh;
-    margin: 0;
-    padding: 0;
-}
-.button {
-    background-color: grey;
-    border-radius: 5px;
-    height: 35px;
-    padding: 5px 30px;
-}
 
-.button-wrapper {
-  margin: 0 auto;
-  max-width: 30%;
-}
 
-.input-field-wrapper {
-  padding: 0 20px;
-  width: 100%;
-   input {
-     border:1px solid #f2f2f2;
-     width:80%;
-   }
-}
-
-.star {
-  color: red;
-  padding: 0 10px;
-}
-
-// Icon backgorund image mixin
+// // Icon backgorund image mixin
 
 @each $name in 'chat' 'edit' 'mood' 'notes' 'profile' 'settings' 'tracker'{
     .icon-#{$name} {
@@ -37,7 +8,7 @@ body {
     }
 }
 
-// Smilie icons mixin
+// // Smilie icons mixin
 
 @each $name in 'smilie-1' 'smilie-2' 'smilie-3' 'smilie-4' 'smilie-5' {
     .icon-#{$name} {
@@ -45,7 +16,7 @@ body {
     }
 }
 
-// Font family mixin
+// // Font family mixin
 
 // String Replace
 @function str-replace($string, $search, $replace: "") {
@@ -91,3 +62,37 @@ body {
 @include font-face('Noto-Sans-Italic', '/app/assets/fonts/NotoSans-Italic/NotoSans-Italic', null,  italic);
 @include font-face('Noto-Sans-Bold', '/app/assets/fonts/NotoSans-Bold/NotoSans-Bold', bold, null);
 @include font-face('Noto-Sans-Bold-Italic', '/app/assets/fonts/NotoSans-BoldItalic/NotoSans-BoldItalic', bold, italic);
+
+body {
+	font-family: 'Noto-Sans';
+	height: 100vh;
+	margin: 0;
+    padding: 0;
+}
+.button {
+    background-color: grey;
+    border-radius: 5px;
+    height: 35px;
+    padding: 5px 30px;
+}
+
+.button-wrapper {
+  margin: 0 auto;
+  max-width: 30%;
+}
+
+.input-field-wrapper {
+  padding: 0 20px;
+  width: 100%;
+   input {
+     border:1px solid #f2f2f2;
+     width:80%;
+   }
+}
+
+.star {
+  color: red;
+  padding: 0 10px;
+}
+
+

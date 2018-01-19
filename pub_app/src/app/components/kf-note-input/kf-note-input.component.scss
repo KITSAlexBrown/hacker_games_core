@@ -1,5 +1,26 @@
 :host {
-  .text-input {
-      width: 80%;
-  }
+    .note-input-heading {
+        padding-bottom: 4px;
+        h1 {
+            margin: 8px;
+            margin-left: 24px;
+            font-size: 24px;
+        }
+    }
+    .input-section {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        .text-input {
+            width: 80%;
+            border: 2px solid grey;
+            font-size: 18px;
+        }
+    }
+    .submit-section {
+      height: calc(100vh - 520px);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
 }
