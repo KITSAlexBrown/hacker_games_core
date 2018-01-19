@@ -40,7 +40,7 @@
 	);
 
 	$formats: (
-		otf: "opentype",
+		eot: "embedded-opentype",
 		ttf: "truetype"
 	);
 
@@ -58,13 +58,13 @@
 	}
 }
 
-@include font-face('Noto-Sans', '/app/assets/fonts/NotoSans-Regular/NotoSans-Regular', regular, null);
-@include font-face('Noto-Sans-Italic', '/app/assets/fonts/NotoSans-Italic/NotoSans-Italic', null,  italic);
-@include font-face('Noto-Sans-Bold', '/app/assets/fonts/NotoSans-Bold/NotoSans-Bold', bold, null);
-@include font-face('Noto-Sans-Bold-Italic', '/app/assets/fonts/NotoSans-BoldItalic/NotoSans-BoldItalic', bold, italic);
+@include font-face('Noto-Sans', '/assets/fonts/NotoSans-Regular/NotoSans-Regular', regular, null);
+@include font-face('Noto-Sans-Italic', '/assets/fonts/NotoSans-Italic/NotoSans-Italic', null,  italic);
+@include font-face('Noto-Sans-Bold', '/assets/fonts/NotoSans-Bold/NotoSans-Bold', bold, null);
+@include font-face('Noto-Sans-Bold-Italic', '/assets/fonts/NotoSans-BoldItalic/NotoSans-BoldItalic', bold, italic);
 
 body {
-	font-family: 'Noto-Sans';
+	font-family: 'Noto-Sans' !important;
 	height: 100vh;
 	margin: 0;
     padding: 0;
@@ -72,6 +72,8 @@ body {
 .button {
     background-color: grey;
     border-radius: 5px;
+    color: white;
+    font-size: 14px;
     height: 35px;
     padding: 5px 30px;
 }

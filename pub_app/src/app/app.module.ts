@@ -16,6 +16,8 @@ import { KfCheckInComponent } from './components/kf-check-in/kf-check-in.compone
 import { KfNoteInputComponent } from './components/kf-note-input/kf-note-input.component';
 import { KfTabComponent } from './components/kf-tab/kf-tab.component';
 import { KfNotesViewComponent } from './components/kf-notes-view/kf-notes-view.component';
+import { KfNotesViewRouteComponent } from './components/kf-notes-view-route/kf-notes-view-route.component';
+// 
 import { D3Service } from 'd3-ng2-service';
 import {
   MatAutocompleteModule,
@@ -105,6 +107,7 @@ const appRoutes: Routes = [
   { path: 'notes', 
       children: [
           { path: '', component: KfNotesViewComponent},
+          { path: ':id', component: KfNotesViewRouteComponent},
           { path: 'create', component: KfNoteInputComponent },
           { path: 'edit', component: KfNoteInputComponent }
       ]
@@ -125,7 +128,12 @@ const appRoutes: Routes = [
     KfProfile,
     KfGraphComponent,
     KfTrackerComponent,
+<<<<<<< HEAD
     KfHeaderComponent
+=======
+    KfHeaderComponent,
+    KfNotesViewRouteComponent
+>>>>>>> 9c7141db10bc78a102645641c4526fe42ffa66ff
   ],
   imports: [
     FormsModule,

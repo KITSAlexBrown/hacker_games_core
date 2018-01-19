@@ -7,8 +7,12 @@ import { Component } from "@angular/core";
 })
 
 export class KfHeaderComponent {
-
+    public showProfile: boolean = false;
     constructor() {
 
+    }
+
+    closeProfile() {
+        this.showProfile = false;
     }
 }

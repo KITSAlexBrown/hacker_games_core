@@ -1,6 +1,7 @@
 import { Component, HostListener } from "@angular/core";
 import { D3Service, D3, Selection } from "d3-ng2-service";
 import { axisTop } from "d3-ng2-service/src/bundle-d3";
+import { Router } from "@angular/router";
 import * as results from "./stub-data";
 
 @Component({
@@ -25,7 +26,7 @@ export class KfGraphComponent {
         this.plotGraph();
     }
 
-    constructor(d3Service: D3Service) {
+    constructor(d3Service: D3Service, private route: Router) {
         this.moodGraphArray = [];
         this.sentimentGraphArray = [];
         this.d3 = d3Service.getD3();
@@ -128,6 +129,11 @@ export class KfGraphComponent {
             })
             .attr("r", 5)
             .style("fill", function (d) { return "blue"; })
+            .on("click", function(event){
+                let newDate = new Date(event.date);
+                console.log("hello", newDate);
+                thisLink.route.navigate(['/notes', '19-01-2018']);
+            });
     }
 
 
