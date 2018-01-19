@@ -10,6 +10,8 @@
         align-items: center;
         .date {
             margin-left: 16px;
+            min-width: 80px;
+            font-size: 12px;
         }
         .edit-button {
           margin-left: auto;
