@@ -33,7 +33,7 @@ export class KfNotesViewComponent implements OnInit {
       let dateString = "";
       let monthNames = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
       dateString = date.getDate() + " ";
-      dateString += monthNames[date.getMonth() - 1] + " ";
+      dateString += monthNames[date.getMonth()] + " ";
       dateString += date.getFullYear() + " ";
       return dateString;
   }
