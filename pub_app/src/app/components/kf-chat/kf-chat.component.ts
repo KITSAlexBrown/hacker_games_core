@@ -3,14 +3,15 @@ import { UsersService } from "./../../providers/users.service";
 import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import Chatkit from "pusher-chatkit-client";
 import { LoginService } from "../../providers/login.service";
+import { Observable } from "rxjs/Observable";
 
 @Component({
-  selector: 'app-chat',
-  templateUrl: './chat.component.html',
-  styleUrls: ['./chat.component.scss']
+  selector: 'kf-chat',
+  templateUrl: './kf-chat.component.html',
+  styleUrls: ['./kf-chat.component.scss']
 })
-export class ChatComponent implements OnInit {
-  public messages: any[];
+export class KfChatComponent implements OnInit {
+  public messages: any[] = [];
   public room: any;
   public userMessage: string = "";
   currentUser: any;
@@ -18,6 +19,7 @@ export class ChatComponent implements OnInit {
   public otherUsers = [];
   user: User;
   @ViewChild('scrollMe') private myScrollContainer: ElementRef;
+  public errorChatkit: string = "";
 
   constructor(private usersService: UsersService, private userService: LoginService) {
 
@@ -37,12 +39,15 @@ export class ChatComponent implements OnInit {
         console.log("Successful connection", currentUser);
         this.currentUser = currentUser;
         this.room = currentUser.rooms[0];
-        this.loadUsers(this.room);
-       this.loadMessages();
-       this.subscribeToRoom(this.room);
+        this.loadUsers(this.room).subscribe(() => {
+          //  this.loadMessages();
+           this.subscribeToRoom(this.room);
+
+        });
       },
       onError: (error) => {
-        console.log("Error on connection");
+        console.log("ERRROR on CONNECTION", error);
+        this.errorChatkit = "Unable to connect to the chat";
       }
     });
 
@@ -50,23 +55,28 @@ export class ChatComponent implements OnInit {
   }
 
   subscribeToRoom(myRoom) {
+    console.log("subscribing to room ", myRoom.name);
     this.currentUser.subscribeToRoom(
       myRoom,
       {
         newMessage: (message) => {
-          if (message.sender.id !== this.user.email) {
-            console.log(`Received new message ${message.text}`);
+          console.log(`Received new message`, message, this.users);
+
             let msg = this.buildMessage(message);
             this.messages.push(msg);
             this.scrollToBottom();
-          }
+
+        },
+        error: (error) => {
+          this.errorChatkit = "Unable to fetch the messages";
         }
       }
+
     );
   }
 
-  loadUsers(room: any) {
-    this.usersService.getUsers().subscribe(users => {
+  loadUsers(room: any): Observable<any> {
+    return this.usersService.getUsers().map(users => {
       console.log(users);
       this.users = users;
       this.otherUsers = users.filter(user => user.email !== this.user.email);
@@ -110,12 +120,6 @@ export class ChatComponent implements OnInit {
       },
       (messageId) => {
         console.log(`Added message to ${this.room.name}`);
-        let msg = {
-          text: this.userMessage,
-          user: this.user
-        };
-        this.messages.push(msg);
-        this.scrollToBottom();
         this.userMessage = "";
       },
       (error) => {
