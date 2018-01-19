@@ -1,11 +1,11 @@
 :host {
     body {
-        background-color: #F1F3F3    
+        background-color: #F1F3F3
       }
       .axis {
           font: 10px sans-serif;
       }
-      
+
       .axis path,
       .axis line {
         fill: none;
@@ -13,30 +13,36 @@
         stroke-width: 2px;
         shape-rendering: crispEdges;
       }
-      
-      .line {
-        fill: none;
-        stroke: black;
+
+      .dot {
+        fill: #ffab00;
+        stroke: #fff;
       }
-      
-      .overlay {
-        fill: none;
-        pointer-events: all;
-      }
-      
+
       .focus circle {
         fill: #F1F3F3;
         stroke: #6F257F;
         stroke-width: 5px;
       }
-        
+
       .hover-line {
         stroke: #6F257F;
         stroke-width: 2px;
         stroke-dasharray: 3,3;
       }
-      .dot {
-        fill: #ffab00;
-        stroke: #fff;
-    }
+
+      .line {
+        fill: none;
+        stroke: black;
+      }
+
+      .overlay {
+        fill: none;
+        pointer-events: all;
+      }
+
+      .page-container-tracker {
+          position: absolute;
+          top: -140px;
+      }
 }
