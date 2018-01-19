@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { RouterLink } from '@angular/router';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-kf-check-in',
@@ -8,7 +8,7 @@ import { RouterLink } from '@angular/router';
 })
 export class KfCheckInComponent implements OnInit {
 
-    constructor() { }
+    constructor(private router: Router) { }
 
     ngOnInit() {
     }
@@ -17,6 +17,12 @@ export class KfCheckInComponent implements OnInit {
 
     setMoodRating(rating: number) {
         this.moodRating = rating;
+    }
+
+    submitRating() {
+        if (this.moodRating) {
+            this.router.navigate(['/notes/create'], {queryParams: {'rating': this.moodRating}});
+        }
     }
 
 
