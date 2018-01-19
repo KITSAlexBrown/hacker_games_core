@@ -1,0 +1,22 @@
+:host {
+
+    .header {
+        position: fixed;
+        top: 0;
+        width: 100%;
+        height: 70px;
+        background-color: white;
+        box-shadow: 0 2px 2px #8b8888;
+        float: left;
+        z-index: 100;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        img {
+            width: 48px;
+        }
+        button {
+            cursor: pointer;
+        }
+    }
+}

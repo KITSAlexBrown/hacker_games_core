@@ -15,9 +15,11 @@ npm start
 
 Data will get backed up to the data dir when we do an export
 
-## URL
+http://10.51.9.65:4000/api/users
 
-* API endpoint: http://localhost:3003
-* Swagger UI: http://localhost:3003/docs
-* Swagger json: http://localhost:3003/api/swagger
 
+## Natrual language lib
+
+```sh
+https://github.com/nhunzaker/speakeasy
+```

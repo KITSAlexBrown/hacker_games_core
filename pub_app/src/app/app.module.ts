@@ -51,10 +51,11 @@ import {
   MatStepperModule,
 } from '@angular/material';
 import { KfIconLink } from './components/kf-icon-link/kf-icon-link.component';
-import { ChatComponent } from './components/chat/chat.component';
+import { KfChatComponent } from './components/kf-chat/kf-chat.component';
 
 import { KfProfile } from "./components/kf-profile/kf-profile.component";
 import { KfGraphComponent } from "./components/kf-graph/kf-graph.component";
+import { KfHeaderComponent } from "./components/kf-header/kf-header.component";
 @NgModule({
   exports: [
     MatAutocompleteModule,
@@ -94,8 +95,14 @@ import { KfGraphComponent } from "./components/kf-graph/kf-graph.component";
 export class DemoMaterialModule {}
 
 const appRoutes: Routes = [
+<<<<<<< HEAD
   { path: 'landing', component: LandingComponent},
   { path: 'chat', component: ChatComponent},
+=======
+  { path: '', component:  KfCheckInComponent},
+  { path: 'landing', component: LandingComponent},
+  { path: 'chat', component: KfChatComponent},
+>>>>>>> a1fd5b61a1de0baccea25bf9698aedb3523952e7
   { path: 'check-in', component: KfCheckInComponent},
   { path: 'profile', component: KfProfile },
   { path: 'notes',
@@ -117,9 +124,10 @@ const appRoutes: Routes = [
     KfNotesViewComponent,
     KfTabComponent,
     KfIconLink,
-    ChatComponent,
+    KfChatComponent,
     KfProfile,
-    KfGraphComponent
+    KfGraphComponent,
+    KfHeaderComponent
   ],
   imports: [
     FormsModule,
