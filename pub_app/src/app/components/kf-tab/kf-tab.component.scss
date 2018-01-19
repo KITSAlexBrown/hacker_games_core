@@ -1,21 +1,21 @@
 :host {
     .footer {
-        position: fixed;
-        bottom: 0;
-        width: 100%;
-        background-color: white;
-        box-shadow: 0 -2px 2px #8b8888;
-        height: 70px;
-        z-index: 100;
-        display: flex;
-        padding: 5px 0;
-        justify-content: space-around;
         align-items: flex-start;
+        background-color: white;
+        bottom: 0;
+        box-shadow: 0 -2px 2px #8b8888;
+        display: flex;
+        height: 70px;
+        justify-content: space-around;
+        padding: 5px 0;
+        position: fixed;
+        width: 100%;
+        z-index: 100;
         a {
             color: black;
+            text-align: center;
             text-decoration: none;
             text-transform: capitalize;
-            text-align: center;
         }
     }
 

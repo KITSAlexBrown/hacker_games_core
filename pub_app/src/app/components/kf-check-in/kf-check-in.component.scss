@@ -4,9 +4,9 @@ ul {
 
 .mood {
     h1 {
+        font-size: 24px;
         margin: 8px;
         margin-left: 24px;
-        font-size: 24px;
     }
 }
 
@@ -19,39 +19,47 @@ ul {
 }
 
 .submit-section {
-    height: calc(100vh - 572px);
-    display: flex;
     align-items: center;
+    display: flex;
+    height: calc(100vh - 572px);
     justify-content: center;
 }
 
 .background {
     background-color: black;
-    width: 100%;
     padding-top: 4px;
     padding-bottom: 4px;
+    width: 100%;
     .list {
-        padding: 0;
         margin-top: 8px;
         margin-bottom: 8px;
+        padding: 0;
         .list-item {
             width: 100%;
             height: 70px;
             display: flex;
+            height: 80px;
+            width: 100%;
             button {
-                width: 100%;
-                display: flex;
                 align-items: center;
+                display: flex;
                 padding: 0px 32px;
+                width: 100%;
                 .list-text {
                     color: white;
-                    text-shadow: 2px 2px black;
                     font-size: 16px;
-                    margin-top: 0px;
                     margin-bottom: 0px;
+                    margin-top: 0px;
                     text-align: center;
+                    text-shadow: 2px 2px black;
                     width: 100%;
                 }
+            }
+        }
+        .blue {
+            background-color: #3c0195;
+            &.selected {
+                background-color: #6401f9;
             }
         }
         .green {
@@ -60,12 +68,7 @@ ul {
                 background-color: #01d301;
             }
         }
-        .yellow {
-            background-color: #956d01;
-            &.selected {
-                background-color: #f9b601;
-            }
-        }
+
         .orange {
             background-color: #954a01;
             &.selected {
@@ -78,11 +81,12 @@ ul {
                 background-color: #f90113;
             }
         }
-        .blue {
-            background-color: #3c0195;
+        .yellow {
+            background-color: #956d01;
             &.selected {
-                background-color: #6401f9;
+                background-color: #f9b601;
             }
         }
+
     }
 }

@@ -8,7 +8,7 @@ import { Router } from '@angular/router';
   styleUrls: ['./kf-landing.component.scss']
 })
 export class LandingComponent  {
-  public email: string = "superman@hero.co";
+  public email: string = "";
   public  showAccessForm: boolean = false;
 
   constructor(private router: Router, private loginService: LoginService) {
