@@ -124,7 +124,7 @@ const appRoutes: Routes = [
     KfChatComponent,
     KfProfile,
     KfGraphComponent,
-    KfTrackerComponent
+    KfTrackerComponent,
     KfHeaderComponent
   ],
   imports: [
