@@ -14,7 +14,7 @@ export class LoginService {
     return this._userLogged;
   }
 
-  public userAccess(username: string, password: string, email: string): Observable<any> {
+  public userAccess(email: string): Observable<any> {
 
      return this.usersService.getUsers().map(users => {
       let found = users.filter(user => user.email === email);

@@ -23,8 +23,6 @@ export class ChatComponent implements OnInit {
 
     this.user = this.userService.user;
 
-
-
     const tokenProvider = new Chatkit.TokenProvider({
       url: "https://us1.pusherplatform.io/services/chatkit_token_provider/v1/d0f075ad-2489-4ce5-b94f-9bc670b84eb4/token?instance_locator=v1:us1:d0f075ad-2489-4ce5-b94f-9bc670b84eb4"
     });
@@ -56,10 +54,12 @@ export class ChatComponent implements OnInit {
       myRoom,
       {
         newMessage: (message) => {
-          console.log(`Received new message ${message.text}`);
-          let msg = this.buildMessage(message);
-          this.messages.push(msg);
-          this.scrollToBottom();
+          if (message.sender.id !== this.user.email) {
+            console.log(`Received new message ${message.text}`);
+            let msg = this.buildMessage(message);
+            this.messages.push(msg);
+            this.scrollToBottom();
+          }
         }
       }
     );
