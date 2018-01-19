@@ -1,3 +1,23 @@
 body {
     height: 100vh;
 }
+
+.button {
+    background-color: grey;
+}
+
+// Icon backgorund image mixin
+
+@each $name in 'chat' 'mood' 'notes' 'profile' 'settings' 'tracker'{
+    .icon-#{$name} {
+        background-image: url('/assets/images/ic_#{$name}.png');
+    }
+}
+
+// Smilie icons mixin
+
+@each $name in 'smilie-1' 'smilie-2' 'smilie-3' 'smilie-4' 'smilie-5' {
+    .icon-#{$name} {
+        background-image: url('/assets/images/#{$name}.png');
+    }
+}
