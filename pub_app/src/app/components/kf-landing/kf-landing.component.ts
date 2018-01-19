@@ -20,11 +20,14 @@ export class LandingComponent  {
     }, 2000);
   }
 
+// Needs refactoring to remove this check and add in validation for existing users or sign up for new users
   public userLogin() {
     this.loginService.userAccess(this.email).subscribe(res => {
       console.log("login result", res["value"]);
       if (res["value"] === true) {
         this.router.navigateByUrl('/check-in');
+      } else {
+          this.router.navigateByUrl('/check-in');
       }
     })
   }
