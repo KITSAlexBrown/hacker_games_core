@@ -128,12 +128,8 @@ const appRoutes: Routes = [
     KfProfile,
     KfGraphComponent,
     KfTrackerComponent,
-<<<<<<< HEAD
-    KfHeaderComponent
-=======
     KfHeaderComponent,
     KfNotesViewRouteComponent
->>>>>>> 9c7141db10bc78a102645641c4526fe42ffa66ff
   ],
   imports: [
     FormsModule,
